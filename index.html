@@ -1,12 +1,15 @@
 <html>
 <head>
 <title>アズキの部屋</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
 body {
   background: #d9e0be;
   color: #5b695c;
-  font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
-  font-size: 12px;
+  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,sans-serif;
+  font-size: 14px;
+  margin:0;
+  padding:0;
 }
 a {
   color:#5b695c;
@@ -34,6 +37,42 @@ a:visited {
   -webkit-text-fill-color: transparent;
   text-shadow: 3px 3px #ffffff;
 }
+
+/* レスポンシブ画像 */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ウェルカム文字アニメーション */
+.welcome {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff33cc;
+  text-shadow: 2px 2px #ffffff;
+  animation: bounce 1s infinite alternate, rainbow 3s linear infinite;
+  display:inline-block;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes rainbow {
+  0%   { color: red; }
+  20%  { color: orange; }
+  40%  { color: yellow; }
+  60%  { color: lime; }
+  80%  { color: cyan; }
+  100% { color: violet; }
+}
+
+/* メディアクエリでスマホ微調整 */
+@media (max-width: 480px) {
+  .wordart { font-size: 28px; }
+  .welcome { font-size: 16px; }
+}
 </style>
 <script>
 // ポップアップ
@@ -58,7 +97,7 @@ document.onmousemove = function(e){
 </head>
 <body>
 <!-- 全体テーブル -->
-<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="260" bgcolor="#ffffff">
+<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" style="width:90%; max-width:400px; background:#ffffff;">
 <tr><td align="center">
 
 <!-- タイトル -->
@@ -73,32 +112,6 @@ document.onmousemove = function(e){
 <div style="font-size:16px; font-weight:bold; color:#5b695c; margin-top:10px;">
 あなたは <span style="color:#ff0000; font-size:18px;">☆200123☆</span> 人目の訪問者です！
 </div>
-
-<style>
-.welcome {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ff33cc;
-  text-shadow: 2px 2px #ffffff;
-  animation: bounce 1s infinite alternate, rainbow 3s linear infinite;
-  display:inline-block;
-}
-
-@keyframes bounce {
-  0%   { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
-}
-
-@keyframes rainbow {
-  0%   { color: red; }
-  20%  { color: orange; }
-  40%  { color: yellow; }
-  60%  { color: lime; }
-  80%  { color: cyan; }
-  100% { color: violet; }
-}
-</style>
-
 
 <hr size="5" color="#5b695c" noshade>
 
