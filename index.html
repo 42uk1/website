@@ -3,99 +3,108 @@
 <title>古の個人サイト</title>
 <style type="text/css">
 body {
-  background-color: #224433;
-  background-image: url("bg_pattern.gif");
-  color: #00ff66;
+  background: #d9e0be;
+  color: #5b695c;
   font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
   font-size: 12px;
 }
-a { color:#00ff00; text-decoration:none; }
-a:hover { color:#ff00ff; background:#000000; }
-.blink { text-decoration:blink; }
+a { 
+  color:#5b695c; 
+  text-decoration:none; 
+}
+a:hover { 
+  color:#a2c8fc; 
+  background:#ffffff; 
+}
+a:visited { 
+  color:#b4abf3; 
+}
+
+.blink { animation: blink 1s step-start infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ワードアート風タイトル */
+.wordart {
+  font-size: 36px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #6ab7ff, #e57373);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px #ffffff;
+}
 </style>
-<script language="JavaScript">
-// レインボーキラキラカーソル
-var rainbowColors = ["#ff0000","#ff7f00","#ffff00","#00ff00","#0000ff","#4b0082","#8b00ff"];
+
+<script>
+// ポップアップ
+function noExist(){
+  alert("存在しないよ！");
+}
+
+// レインボーカラーキラキラカーソル
 document.onmousemove = function(e){
   var star = document.createElement("span");
   star.innerHTML="✧";
   star.style.position="absolute";
   star.style.left = (e.pageX)+"px";
   star.style.top = (e.pageY)+"px";
-  star.style.color= rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+  star.style.color="hsl(" + Math.random()*360 + ",100%,60%)";
   star.style.fontSize="12px";
   star.style.pointerEvents="none";
   document.body.appendChild(star);
-  setTimeout(function(){ if(star.parentNode){ star.parentNode.removeChild(star);} },300);
+  setTimeout(function(){star.remove()},400);
 };
-// 右クリック禁止
-document.oncontextmenu = function(){ alert('右クリック禁止！'); return false; };
-// 未実装リンク用
-function notExist(){ alert("存在しないよ！"); }
 </script>
 </head>
 
 <body>
 
 <!-- 全体テーブル -->
-<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="240">
-<tr><td align="center" bgcolor="#002200">
+<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="260" bgcolor="#ffffff">
+<tr><td align="center">
 
 <!-- タイトル -->
-<font size="5" color="#00ff00" style="text-shadow:2px 2px #000000;"><b>古の個人サイト</b></font><br>
+<div class="wordart">古の個人サイト</div>
 <img src="new.gif"> <img src="under_construction.gif"><br>
 
-<!-- マーキー -->
 <marquee behavior="alternate" scrollamount="5">
-<font class="blink" color="#00ff66" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
+<font class="blink" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
 </marquee>
 
-<hr size="5" color="#ffffff" noshade>
+<hr size="5" color="#5b695c" noshade>
 
-<!-- カウンター -->
-あなたは <img src="counter.cgi?start=200123"> 人目の訪問者です☆
+<!-- アクセスカウンター -->
+<div style="font-size:16px; font-weight:bold; color:#5b695c;">
+あなたは ☆200123☆ 人目の訪問者です！
+</div>
 
-<hr size="5" color="#ffffff" noshade>
+<hr size="5" color="#5b695c" noshade>
 
 <!-- MENU -->
-<table border="1" bordercolor="#ffffff" cellspacing="0" cellpadding="3" width="100%">
-<tr><td align="center" bgcolor="#113322">
-<font color="#00ff00">★ MENU ★</font>
+<table border="1" bordercolor="#5b695c" cellspacing="0" cellpadding="3" width="100%">
+<tr><td align="center" bgcolor="#ffffff">
+<font color="#5b695c">★ MENU ★</font>
 </td></tr>
 <tr><td>
 <ul>
-<li><a href="profile.html">プロフィール <img src="new.gif"></a></li>
-<li><a href="photo.html">写真置き場 <img src="under_construction.gif"></a></li>
 <li><a href="https://note.com/42uk1" target="_blank">note</a></li>
 <li><a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a></li>
 <li><a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a></li>
 <li><a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a></li>
-<li><a href="javascript:notExist()">チャットルーム</a></li>
-<li><a href="javascript:notExist()">ゲーム置き場</a></li>
+<li><a href="#" onclick="noExist()">キリ番報告フォーム</a></li>
+<li><a href="#" onclick="noExist()">相互リンクの部屋</a></li>
+<li><a href="#" onclick="noExist()">リンク集</a></li>
+<li><a href="profile.html">プロフィール</a></li>
+<li><a href="photos.html">写真置き場</a></li>
 </ul>
 </td></tr>
 </table>
 
-<hr size="5" color="#ffffff" noshade>
+<hr size="5" color="#5b695c" noshade>
 
 <!-- 画像展示 -->
 <center>
 <img src="moe.png" width="200"><br>
-<blink><font color="#00ff00">☆自作萌え絵展示中☆</font></blink>
 </center>
-
-<hr size="5" color="#ffffff" noshade>
-
-<!-- 各種リンク -->
-<a href="guest.cgi">キリ番報告フォーム</a><br>
-<a href="guestbook.html">ゲストブック</a><br>
-<a href="bbs.html">掲示板</a><br>
-<a href="links.html">相互リンクの部屋</a><br>
-<a href="footprint.html">足あと帳</a><br>
-<a href="http://www.kusoripu.com" target="_blank">毒吐きネットマナー</a><br>
-
-<!-- 隠しリンク -->
-<a href="secret.html"><img src="secret.gif" width="1" height="1"></a>
 
 </td></tr>
 </table>
