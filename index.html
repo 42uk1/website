@@ -5,17 +5,14 @@
 
 <style>
 .wordart {
-  font-family: 'M PLUS Rounded 1c', 'Yomogi', cursive, sans-serif;
-  font-size: 40px;
+  font-size: 42px;
   font-weight: bold;
-  background: linear-gradient(90deg, #ff99cc, #66ccff, #ffcc66);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
+  color: #5c2d91; /* 深めの紫 */
   text-shadow: 
-     2px 2px 0px #ffffff,
-     4px 4px 6px rgba(0,0,0,0.2);
-  animation: shine 3s infinite linear, floaty 2s ease-in-out infinite alternate;
-  display:inline-block;
+    2px 2px 4px rgba(0,0,0,0.3),  /* 影で浮かす */
+    0 0 10px rgba(92,45,145,0.4); /* ぼんやり光彩 */
+  letter-spacing: 2px; /* ゆったり文字間隔 */
 }
 
 /* 文字がキラッと光るアニメーション */
@@ -24,11 +21,6 @@
   100% { background-position: 200% 50%; }
 }
 
-/* ふわふわ浮く動き */
-@keyframes floaty {
-  0%   { transform: translateY(0px) rotate(-1deg); }
-  100% { transform: translateY(-8px) rotate(1deg); }
-}
 </style>
 
 <title>アズキの部屋</title>
@@ -38,11 +30,12 @@ body {
   background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
   background-size: cover;
   color: #5b695c;
-  font-family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,sans-serif;
+  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
   font-size: 14px;
   margin:0;
   padding:0;
 }
+
 
 
 }
