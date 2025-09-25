@@ -3,107 +3,77 @@
 <title>アズキの部屋</title>
 <style type="text/css">
 body {
-  background: #d9e0be;
-  color: #5b695c;
+  background: #008080; /* Windows98風デスクトップ色 */
   font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
   font-size: 12px;
-}
-a { 
-  color:#5b695c; 
-  text-decoration:none; 
-}
-a:hover { 
-  color:#a2c8fc; 
-  background:#ffffff; 
-}
-a:visited { 
-  color:#b4abf3; 
+  color: #000000;
 }
 
-.blink { animation: blink 1s step-start infinite; }
-@keyframes blink { 50% { opacity: 0; } }
+.winbox {
+  border: 2px solid #c0c0c0;
+  width: 400px;
+  margin: 40px auto;
+  background: #ffffff;
+}
 
-/* ワードアート風タイトル */
-.wordart {
-  font-size: 36px;
+.titlebar {
+  background: #000080;
+  color: #ffffff;
   font-weight: bold;
-  background: linear-gradient(90deg, #6ab7ff, #e57373);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 3px 3px #ffffff;
+  font-size: 14px;
+  padding: 2px;
+  height: 20px;
+}
+
+.titlebar img {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.wincontrols {
+  float: right;
+  color: #ffffff;
+  font-family: "ＭＳ Ｐゴシック";
+}
+
+.wincontrols span {
+  border: 1px solid #ffffff;
+  padding: 0 4px;
+  margin-left: 2px;
+  background: #808080;
+  cursor: pointer;
+}
+
+.content {
+  background: #ffffff;
+  padding: 10px;
+  border-top: 2px solid #c0c0c0;
 }
 </style>
-
-<script>
-// ポップアップ
-function noExist(){
-  alert("存在しないよ！");
-}
-
-// レインボーカラーキラキラカーソル
-document.onmousemove = function(e){
-  var star = document.createElement("span");
-  star.innerHTML="✧";
-  star.style.position="absolute";
-  star.style.left = (e.pageX)+"px";
-  star.style.top = (e.pageY)+"px";
-  star.style.color="hsl(" + Math.random()*360 + ",100%,60%)";
-  star.style.fontSize="12px";
-  star.style.pointerEvents="none";
-  document.body.appendChild(star);
-  setTimeout(function(){star.remove()},400);
-};
-</script>
 </head>
 
 <body>
 
-<!-- 全体テーブル -->
-<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="260" bgcolor="#ffffff">
-<tr><td align="center">
-
-<!-- タイトル -->
-<div class="wordart">アズキの部屋</div>
-<div style="font-size:40px; color:#ffcc00; text-shadow:2px 2px #5b695c;">
-☺
-</div>
-
-<img src="new.gif"> <img src="under_construction.gif"><br>
-
-<marquee behavior="alternate" scrollamount="5">
-<font class="blink" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
-</marquee>
-
-<hr size="5" color="#5b695c" noshade>
-
-<!-- アクセスカウンター -->
-<div style="font-size:16px; font-weight:bold; color:#5b695c;">
-あなたは ☆200123☆ 人目の訪問者です！
-</div>
-
-<hr size="5" color="#5b695c" noshade>
-
-<!-- リンク一覧 -->
-<div style="text-align:left; line-height:2;">
-<a href="https://note.com/42uk1" target="_blank">note</a><br><br>
-<a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br><br>
-<a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br><br>
-<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a><br><br>
-<a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
-<a href="#" onclick="noExist()">相互リンクの部屋</a><br><br>
-<a href="#" onclick="noExist()">リンク集</a><br><br>
-<a href="profile.html">プロフィール</a><br><br>
-<a href="photos.html">写真置き場</a>
-</div>
-
-<hr size="5" color="#5b695c" noshade>
-
-<!-- 画像展示 -->
-<center>
-<img src="moe.png" width="200"><br>
-</center>
-
-</td></tr>
+<!-- Windows98風ウィンドウ -->
+<table class="winbox" cellspacing="0" cellpadding="0">
+<tr>
+  <td class="titlebar">
+    <img src="icon.gif" width="16" height="16" alt="★"> アズキの部屋
+    <span class="wincontrols">
+      <span>－</span><span>□</span><span>×</span>
+    </span>
+  </td>
+</tr>
+<tr>
+  <td class="content">
+    <b>いらっしゃいませ！</b><br><br>
+    ここに本文が入ります。<br><br>
+    <a href="#">note</a><br><br>
+    <a href="#">ブクログ</a><br><br>
+    <a href="#">Filmarks</a><br><br>
+    <a href="#">マシュマロ</a><br><br>
+  </td>
+</tr>
 </table>
 
 </body>
