@@ -10,7 +10,7 @@
   font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
   color: #5c2d91; /* 深めの紫 */
   text-shadow: 
-    2px 2px 4px rgba(0,0,0,0.3),  /* 影で浮かす */
+   
     0 0 10px rgba(92,45,145,0.4); /* ぼんやり光彩 */
   letter-spacing: 2px; /* ゆったり文字間隔 */
 }
@@ -167,6 +167,30 @@ document.onmousemove = function(e){
 <a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
 <a href="#" onclick="noExist()">リンク集</a>
 </div>
+
+
+/* リンクの基本色（訪問前） */
+a:link {
+  color:#5b695c;
+  text-decoration:none;
+}
+
+/* 訪問後 */
+a:visited {
+  color:#b4abf3;
+}
+
+/* ホバー時 */
+a:hover {
+  color:#a2c8fc;
+  background:#ffffff;
+}
+
+/* クリックしている時 */
+a:active {
+  color:#ff6600;
+}
+
 
 </td></tr>
 </table>
