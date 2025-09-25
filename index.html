@@ -66,16 +66,39 @@ document.onmousemove = function(e){
 <div style="font-size:40px; color:#ffcc00; text-shadow:2px 2px #5b695c;"> ☺ </div>
 <img src="new.gif"> <img src="under_construction.gif"><br>
 
-<marquee behavior="alternate" scrollamount="5">
-  <font class="blink" size="4">ご訪問ありがとうございます</font>
-</marquee>
-
-<hr size="5" color="#5b695c" noshade>
+<!-- ご訪問ありがとうございます -->
+<div class="welcome">ご訪問ありがとうございます</div>
 
 <!-- アクセスカウンター -->
-<div style="font-size:16px; font-weight:bold; color:#5b695c;">
-人目の訪問者
+<div style="font-size:16px; font-weight:bold; color:#5b695c; margin-top:10px;">
+あなたは <span style="color:#ff0000; font-size:18px;">☆200123☆</span> 人目の訪問者です！
 </div>
+
+<style>
+.welcome {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff33cc;
+  text-shadow: 2px 2px #ffffff;
+  animation: bounce 1s infinite alternate, rainbow 3s linear infinite;
+  display:inline-block;
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes rainbow {
+  0%   { color: red; }
+  20%  { color: orange; }
+  40%  { color: yellow; }
+  60%  { color: lime; }
+  80%  { color: cyan; }
+  100% { color: violet; }
+}
+</style>
+
 
 <hr size="5" color="#5b695c" noshade>
 
