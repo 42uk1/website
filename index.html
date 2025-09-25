@@ -1,5 +1,36 @@
 <html>
 <head>
+  <!-- head内に追加 -->
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Yomogi&display=swap" rel="stylesheet">
+
+<style>
+.wordart {
+  font-family: 'M PLUS Rounded 1c', 'Yomogi', cursive, sans-serif;
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff99cc, #66ccff, #ffcc66);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 
+     2px 2px 0px #ffffff,
+     4px 4px 6px rgba(0,0,0,0.2);
+  animation: shine 3s infinite linear, floaty 2s ease-in-out infinite alternate;
+  display:inline-block;
+}
+
+/* 文字がキラッと光るアニメーション */
+@keyframes shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ふわふわ浮く動き */
+@keyframes floaty {
+  0%   { transform: translateY(0px) rotate(-1deg); }
+  100% { transform: translateY(-8px) rotate(1deg); }
+}
+</style>
+
 <title>アズキの部屋</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
