@@ -42,13 +42,17 @@ img { max-width: 100%; height: auto; }
 .welcome {
   font-size: 18px;
   font-weight: bold;
-  color: #ff33cc;
-  text-shadow: 2px 2px #ffffff;
-  animation: bounce 1s infinite alternate, rainbow 3s linear infinite;
-  display:inline-block;
+  color: #5b695c; /* 本文と同系色 */
+  text-shadow: 0 0 5px #5b695c, 0 0 10px #5b695c;
+  animation: blinkColor 1s infinite;
+  display: inline-block;
 }
-@keyframes bounce { 0% { transform: translateY(0px); } 100% { transform: translateY(-10px); } }
-@keyframes rainbow { 0%{color:red;}20%{color:orange;}40%{color:yellow;}60%{color:lime;}80%{color:cyan;}100%{color:violet;} }
+
+@keyframes blinkColor {
+  0%, 100% { text-shadow: 0 0 5px #5b695c, 0 0 10px #5b695c; }
+  50% { text-shadow: 0 0 15px #5b695c, 0 0 25px #5b695c; }
+}
+
 
 /* スマホ調整 */
 @media (max-width: 480px) {
