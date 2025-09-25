@@ -79,10 +79,13 @@ img {
 }
 
 /* スマホ調整 */
-@media (max-width: 300px) {
-  .wordart { font-size: 28px; }
-  .welcome { font-size: 16px; }
+@media (max-width: 480px) {
+  table {
+    width: 95%;     /* 少し狭めに */
+    max-width: 320px; /* スマホ用に最大幅を小さく */
+  }
 }
+
 </style>
 
 <script>
@@ -109,8 +112,8 @@ document.onmousemove = function(e){
 
 <body>
 <!-- 全体テーブル -->
-<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" style="width:90%; max-width:400px; background:#ffffff;">
-<tr><td align="center">
+<table class="main-table" border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" style="width:90%; max-width:400px; background:#ffffff;">
+
 
 <!-- タイトル -->
 <div class="wordart">アズキの部屋</div>
