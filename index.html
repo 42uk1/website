@@ -8,21 +8,23 @@ body {
   font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
   font-size: 12px;
 }
-a { 
-  color:#5b695c; 
-  text-decoration:none; 
+a {
+  color:#5b695c;
+  text-decoration:none;
 }
-a:hover { 
-  color:#a2c8fc; 
-  background:#ffffff; 
+a:hover {
+  color:#a2c8fc;
+  background:#ffffff;
 }
-a:visited { 
-  color:#b4abf3; 
+a:visited {
+  color:#b4abf3;
 }
-
-.blink { animation: blink 1s step-start infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
+.blink {
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
 /* ワードアート風タイトル */
 .wordart {
   font-size: 36px;
@@ -33,7 +35,6 @@ a:visited {
   text-shadow: 3px 3px #ffffff;
 }
 </style>
-
 <script>
 // ポップアップ
 function noExist(){
@@ -55,56 +56,55 @@ document.onmousemove = function(e){
 };
 </script>
 </head>
-
 <body>
-
 <!-- 全体テーブル -->
 <table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="260" bgcolor="#ffffff">
 <tr><td align="center">
 
 <!-- タイトル -->
 <div class="wordart">アズキの部屋</div>
-<div style="font-size:40px; color:#ffcc00; text-shadow:2px 2px #5b695c;">
-☺
-</div>
-
+<div style="font-size:40px; color:#ffcc00; text-shadow:2px 2px #5b695c;"> ☺ </div>
 <img src="new.gif"> <img src="under_construction.gif"><br>
 
 <marquee behavior="alternate" scrollamount="5">
-<font class="blink" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
+  <font class="blink" size="4">ご訪問ありがとうございます</font>
 </marquee>
 
 <hr size="5" color="#5b695c" noshade>
 
 <!-- アクセスカウンター -->
 <div style="font-size:16px; font-weight:bold; color:#5b695c;">
-あなたは ☆200123☆ 人目の訪問者です！
+人目の訪問者
 </div>
 
 <hr size="5" color="#5b695c" noshade>
 
-<!-- リンク一覧 -->
-<div style="text-align:left; line-height:2;">
+<!-- リンク一覧（中央寄せ） -->
+<div style="text-align:center; line-height:2;">
+<a href="profile.html">プロフィール</a><br><br>
 <a href="https://note.com/42uk1" target="_blank">note</a><br><br>
 <a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br><br>
 <a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br><br>
-<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a><br><br>
-<a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
-<a href="#" onclick="noExist()">相互リンクの部屋</a><br><br>
-<a href="#" onclick="noExist()">リンク集</a><br><br>
-<a href="profile.html">プロフィール</a><br><br>
-<a href="photos.html">写真置き場</a>
+<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a>
 </div>
 
 <hr size="5" color="#5b695c" noshade>
 
-<!-- 画像展示 -->
+<!-- 写真表示 -->
 <center>
 <img src="moe.png" width="200"><br>
 </center>
 
+<hr size="5" color="#5b695c" noshade>
+
+<!-- 下部リンク（中央寄せ） -->
+<div style="text-align:center; line-height:2;">
+<a href="#" onclick="noExist()">BBS</a><br><br>
+<a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
+<a href="#" onclick="noExist()">リンク集</a>
+</div>
+
 </td></tr>
 </table>
-
 </body>
 </html>
