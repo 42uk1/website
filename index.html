@@ -1,137 +1,95 @@
-<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>古の個人サイト</title>
 <style type="text/css">
 body {
-  background-image: url('bg_pattern.gif');
-  background-repeat: repeat;
-  margin: 0;
-  padding: 0;
-  font-family: "ＭＳ ゴシック", monospace;
-  text-align: center;
-}
-table { border-collapse: collapse; margin: 0 auto; }
-a { color: #0000ff; text-decoration: underline; }
-a:hover { text-decoration: none; }
-.counter {
+  background: url("bg_pattern.gif");
+  color: #00ff66;
+  font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
   font-size: 12px;
-  background: #ffffcc;
-  border: 1px solid #ff0000;
-  padding: 2px 4px;
 }
-.star {
-  position: absolute;
-  font-size: 14px;
-  pointer-events: none;
-  z-index: 9999;
-}
+a { color:#00ff00; text-decoration:none; }
+a:hover { color:#ff00ff; background:#000000; }
+.blink { text-decoration:blink; }
 </style>
-<script type="text/javascript">
-// 右クリック禁止
-document.oncontextmenu=function(){alert('右クリック禁止！');return false;};
-
-// カウンター
-function initCounter(){
-  var k='ancient_counter_v1';
-  var v=parseInt(localStorage.getItem(k),10);
-  if(isNaN(v)||v<200123){v=200123;}
-  v++;
-  localStorage.setItem(k,v);
-  document.getElementById('counter').innerHTML=v;
-}
-
-// marquee 点滅
-var blinkState=true;
-function blinkMarquee(){
-  var el=document.getElementById('marqueeTxt');
-  blinkState=!blinkState;
-  el.style.visibility=blinkState?'visible':'hidden';
-}
-
-// キラキラ
-var last=0,sc=0;
-function makeStar(x,y){
-  var s=document.createElement('span');
-  s.className='star';
-  s.style.left=x+'px';s.style.top=y+'px';
-  var arr=['★','☆','✦','✧'];
-  s.innerHTML=arr[sc%arr.length];sc++;
-  document.body.appendChild(s);
-  var op=1;
-  var t=setInterval(function(){
-    op-=0.1;if(op<=0){clearInterval(t);document.body.removeChild(s);}
-    s.style.opacity=op;
-  },50);
-}
-function move(e){
-  var now=new Date().getTime();
-  if(now-last<60)return;last=now;
-  makeStar(e.pageX,e.pageY);
-}
-
-window.onload=function(){
-  initCounter();
-  setInterval(blinkMarquee,400);
-  document.onmousemove=move;
+<script language="JavaScript">
+// キラキラカーソル
+document.onmousemove = function(e){
+  var star = document.createElement("span");
+  star.innerHTML="✧";
+  star.style.position="absolute";
+  star.style.left = (e.pageX)+"px";
+  star.style.top = (e.pageY)+"px";
+  star.style.color="#00ff99";
+  star.style.fontSize="12px";
+  star.style.pointerEvents="none";
+  document.body.appendChild(star);
+  setTimeout(function(){star.parentNode.removeChild(star)},300);
 };
+// 右クリック禁止
+document.oncontextmenu = function(){ alert('右クリック禁止！'); return false; };
 </script>
 </head>
+
 <body>
 
-<!-- タイトル -->
-<p><img src="title_pop.gif" alt="古の個人サイト" width="200"></p>
+<!-- 全体テーブル -->
+<table border="5" bordercolor="#00ff00" cellspacing="0" cellpadding="5" align="center" width="240">
+<tr><td align="center" bgcolor="#003300">
 
-<!-- カウンター -->
-<p class="counter">あなたは <span id="counter">200123</span> 人目のお客さまです</p>
+<!-- タイトル画像風 -->
+<font size="5" color="#00ff00" style="text-shadow:2px 2px #000000;"><b>古の個人サイト</b></font><br>
+<img src="new.gif"> <img src="under_construction.gif"><br>
 
-<!-- marquee -->
-<marquee behavior="scroll" direction="left" scrollamount="3">
-  <span id="marqueeTxt">いらっしゃいませ！！！</span>
+<!-- マーキー -->
+<marquee behavior="alternate" scrollamount="5">
+<font class="blink" color="#00ff66" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
 </marquee>
 
-<!-- メイン萌え絵 -->
-<p><img src="moe.png" alt="自作萌え絵" width="200" style="border:1px solid #000;"></p>
+<hr size="5" color="#00ff00" noshade>
+
+<!-- カウンター -->
+あなたは <img src="counter.cgi?start=200123"> 人目の訪問者です☆
+
+<hr size="5" color="#00ff00" noshade>
 
 <!-- リンク集 -->
-<table cellpadding="2" cellspacing="0" border="0">
-  <tr><td><a href="guestbook.html">...guestbook...</a></td></tr>
-  <tr><td><a href="aibou_links.html">...link room...</a></td></tr>
-  <tr><td><a href="footprints.html">...footprints...</a></td></tr>
-  <tr><td><a href="baton.html">...baton...</a></td></tr>
-  <tr><td><a href="http://example.com/net-manners" target="_blank">...net manners...</a></td></tr>
+<table border="1" bordercolor="#00ff00" cellspacing="0" cellpadding="3" width="100%">
+<tr><td align="center" bgcolor="#001100">
+<font color="#00ff00">★ リンク集 ★</font>
+</td></tr>
+<tr><td>
+<ul>
+<li><a href="https://note.com/42uk1" target="_blank">note</a></li>
+<li><a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a></li>
+<li><a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a></li>
+<li><a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a></li>
+</ul>
+</td></tr>
 </table>
 
-<!-- キリ番報告 -->
-<p>■キリ番報告</p>
-<form method="post" action="guest.cgi">
-  HN:<br><input type="text" name="handle" size="15"><br>
-  番号:<br><input type="text" name="num" size="10"><br>
-  <input type="submit" value="報告する">
-</form>
+<hr size="5" color="#00ff00" noshade>
 
-<!-- 同盟バナー -->
-<p>
-  <img src="alliance1.gif" width="200" height="40">
-  <br>
-  <img src="alliance2.gif" width="200" height="40"><br>
-  <img src="alliance3.gif" width="200" height="40">
-</p>
+<!-- 画像展示 -->
+<center>
+<img src="moe.png" width="200"><br>
+</center>
 
-<!-- 工事中/NEW 2コマGIF -->
-<p><img src="under_construction.gif" id="twogif" width="100"></p>
-<script>
-var imgs=['under_construction.gif','new.gif'],idx=0;
-setInterval(function(){
-  idx=(idx+1)%imgs.length;
-  document.getElementById('twogif').src=imgs[idx];
-},800);
-</script>
+<hr size="5" color="#00ff00" noshade>
 
-<noscript>
-<p style="color:red;">※JavaScriptを有効にすると演出が動きます</p>
-</noscript>
+<!-- 各種リンク -->
+<a href="guest.cgi">キリ番報告フォーム</a><br>
+<a href="guestbook.html">ゲストブック</a><br>
+<a href="bbs.html">掲示板</a><br>
+<a href="links.html">相互リンクの部屋</a><br>
+<a href="footprint.html">足あと帳</a><br>
+<a href="http://www.kusoripu.com" target="_blank">毒吐きネットマナー</a><br>
+
+<!-- 隠しリンク -->
+<a href="secret.html"><img src="secret.gif" width="1" height="1"></a>
+
+</td></tr>
+</table>
 
 </body>
 </html>
