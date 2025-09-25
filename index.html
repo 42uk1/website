@@ -12,49 +12,31 @@ body {
   font-size: 14px;
   margin:0;
   padding:0;
+  text-align: center;
 }
 
 /* タイトル */
 .wordart {
   font-size: 42px;
   font-weight: bold;
-  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
   color: #555555; /* グレー */
-  text-shadow: 
-    2px 2px 4px rgba(0,0,0,0.2), /* 影でぼかす */
-    0 0 8px rgba(85,85,85,0.4);  /* ぼんやり光彩 */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(85,85,85,0.4);
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 /* リンク色 */
-a:link {
-  color:#5b695c;
-  text-decoration:none;
-}
-a:visited {
-  color:#b4abf3;
-}
-a:hover {
-  color:#a2c8fc;
-  background:#ffffff;
-}
-a:active {
-  color:#ff6600;
-}
+a:link { color:#5b695c; text-decoration:none; }
+a:visited { color:#b4abf3; }
+a:hover { color:#a2c8fc; background:#ffffff; }
+a:active { color:#ff6600; }
 
 /* 点滅用（必要なら） */
-.blink {
-  animation: blink 1s step-start infinite;
-}
-@keyframes blink {
-  50% { opacity: 0; }
-}
+.blink { animation: blink 1s step-start infinite; }
+@keyframes blink { 50% { opacity: 0; } }
 
 /* レスポンシブ画像 */
-img {
-  max-width: 100%;
-  height: auto;
-}
+img { max-width: 100%; height: auto; }
 
 /* ウェルカム文字アニメーション */
 .welcome {
@@ -65,45 +47,31 @@ img {
   animation: bounce 1s infinite alternate, rainbow 3s linear infinite;
   display:inline-block;
 }
-@keyframes bounce {
-  0%   { transform: translateY(0px); }
-  100% { transform: translateY(-10px); }
-}
-@keyframes rainbow {
-  0%   { color: red; }
-  20%  { color: orange; }
-  40%  { color: yellow; }
-  60%  { color: lime; }
-  80%  { color: cyan; }
-  100% { color: violet; }
-}
+@keyframes bounce { 0% { transform: translateY(0px); } 100% { transform: translateY(-10px); } }
+@keyframes rainbow { 0%{color:red;}20%{color:orange;}40%{color:yellow;}60%{color:lime;}80%{color:cyan;}100%{color:violet;} }
 
 /* スマホ調整 */
 @media (max-width: 480px) {
-  table {
-    width: 95%;     /* 少し狭めに */
-    max-width: 320px; /* スマホ用に最大幅を小さく */
-  }
+  .main-table { width: 95%; max-width: 320px; }
+  .wordart { font-size: 28px; }
+  .welcome { font-size: 16px; }
 }
-
 </style>
 
 <script>
 // ポップアップ
-function noExist(){
-  alert("存在しないよ！");
-}
+function noExist(){ alert("存在しないよ！"); }
 
 // レインボーカラーキラキラカーソル
 document.onmousemove = function(e){
   var star = document.createElement("span");
   star.innerHTML="✧";
   star.style.position="absolute";
-  star.style.left = (e.pageX)+"px";
-  star.style.top = (e.pageY)+"px";
-  star.style.color="hsl(" + Math.random()*360 + ",100%,60%)";
-  star.style.fontSize="12px";
-  star.style.pointerEvents="none";
+  star.style.left = e.pageX + "px";
+  star.style.top = e.pageY + "px";
+  star.style.color = "hsl(" + Math.random()*360 + ",100%,60%)";
+  star.style.fontSize = "12px";
+  star.style.pointerEvents = "none";
   document.body.appendChild(star);
   setTimeout(function(){star.remove()},400);
 };
@@ -113,46 +81,44 @@ document.onmousemove = function(e){
 <body>
 <!-- 全体テーブル -->
 <table class="main-table" border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" style="width:90%; max-width:400px; background:#ffffff;">
+<tr><td>
 
+  <!-- タイトル -->
+  <div class="wordart">アズキの部屋</div>
+  <img src="1015.jpg" width="200"><br>
 
-<!-- タイトル -->
-<div class="wordart">アズキの部屋</div>
-<img src="1015.jpg" width="200"><br>
+  <!-- ご訪問ありがとうございます -->
+  <div class="welcome">ご訪問ありがとうございます</div>
 
-<!-- ご訪問ありがとうございます -->
-<div class="welcome">ご訪問ありがとうございます</div>
+  <!-- アクセスカウンター -->
+  <div style="font-size:16px; font-weight:bold; color:#5b695c; margin-top:10px;">
+    あなたは <span style="color:#67b5b7; font-size:18px;">200123</span> 人目の訪問者です！
+  </div>
 
-<!-- アクセスカウンター -->
-<div style="font-size:16px; font-weight:bold; color:#5b695c; margin-top:10px;">
-あなたは <span style="color:#67b5b7; font-size:18px;">200123</span> 人目の訪問者です！
-</div>
+  <hr size="5" color="#5b695c" noshade>
 
-<hr size="5" color="#5b695c" noshade>
+  <!-- リンク一覧 -->
+  <div style="text-align:center; line-height:2;">
+    <a href="profile.html">プロフィール</a><br><br>
+    <a href="https://note.com/42uk1" target="_blank">note</a><br><br>
+    <a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br><br>
+    <a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br><br>
+    <a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a>
+  </div>
 
-<!-- リンク一覧 -->
-<div style="text-align:center; line-height:2;">
-<a href="profile.html">プロフィール</a><br><br>
-<a href="https://note.com/42uk1" target="_blank">note</a><br><br>
-<a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br><br>
-<a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br><br>
-<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a>
-</div>
+  <hr size="5" color="#5b695c" noshade>
 
-<hr size="5" color="#5b695c" noshade>
+  <!-- 写真表示 -->
+  <img src="0355.png" width="200"><br>
 
-<!-- 写真表示 -->
-<center>
-<img src="0355.png" width="200"><br>
-</center>
+  <hr size="5" color="#5b695c" noshade>
 
-<hr size="5" color="#5b695c" noshade>
-
-<!-- 下部リンク -->
-<div style="text-align:center; line-height:2;">
-<a href="#" onclick="noExist()">BBS</a><br><br>
-<a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
-<a href="#" onclick="noExist()">リンク集</a>
-</div>
+  <!-- 下部リンク -->
+  <div style="text-align:center; line-height:2;">
+    <a href="#" onclick="noExist()">BBS</a><br><br>
+    <a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
+    <a href="#" onclick="noExist()">リンク集</a>
+  </div>
 
 </td></tr>
 </table>
