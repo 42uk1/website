@@ -1,90 +1,382 @@
-<!DOCTYPE html>
+<!doctype html>
+<!--
+  古の個人サイト (Netscape4/IE5 風味)
+  要件:
+   - テーブルで全レイアウト（divは使わない）
+   - 背景に bg_pattern.gif タイル
+   - 虹色罫線風 hr（size,color,noshade）をセル境界的に使用
+   - 隠しリンク: 1x1 transparent gif secret.gif -> secret.html
+   - タイトルは画像（創英角ポップ体風を想定：title_pop.gif）
+   - カウンター(counter.cgi 想定)を擬似的に localStorage で増やす（初期200123）
+   - キリ番報告フォーム -> guest.cgi
+   - marquee 点滅スクロール、工事中/NEW GIF ループ
+   - マウス追従キラキラ（spanで生成／フェード）
+   - 右クリック禁止 alert
+   - すべてインライン CSS / JS に収める
+-->
+
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Progate</title>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>古の個人サイト</title>
+
+<!-- インライン CSS（極力レガシーに） -->
+<style type="text/css">
+  /* 全体背景タイル */
+  body {
+    background-image: url('bg_pattern.gif');
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    font-family: "ＭＳ ゴシック", monospace;
+    color: #000000;
+    cursor: default;
+  }
+
+  /* テーブル全体の余白を消す（セル間余白0） */
+  table { border-collapse: collapse; border-spacing: 0; }
+
+  /* 見出し画像の代替テキスト部分 */
+  .titleimg { display: block; }
+
+  /* 小さめリンクスタイル（古臭く）*/
+  a { color: #0000ff; text-decoration: underline; }
+  a:hover { text-decoration: none; }
+
+  /* カウンター表示装飾（原色＋縁取りっぽく） */
+  .counter {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 4px 8px;
+    background: #ffff00;
+    border: 3px solid #ff0000; /* 強い縁取り風 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#888888,direction=135); /* IE用影 */
+  }
+
+  /* marquee 内の点滅用 */
+  .blink { font-weight: bold; font-size: 20px; }
+
+  /* 星（キラキラ）基本スタイル（spanで生成） */
+  .star {
+    position: absolute;
+    font-size: 18px;
+    line-height: 18px;
+    pointer-events: none; /* マウスイベントを透過 */
+    z-index: 9999;
+    opacity: 1;
+    font-family: "ＭＳ 明朝", serif;
+  }
+
+  /* 200x40 同盟バナーサイズ指定 */
+  .ally { width: 200px; height: 40px; border: 1px solid #000000; display: inline; }
+
+  /* フォーム入力（レガシー） */
+  input, textarea { font-family: "ＭＳ ゴシック", monospace; font-size: 12px; }
+</style>
+
+<script type="text/javascript">
+/* -------------------------
+   レガシー JS（1998-2003 風）
+   ------------------------- */
+
+/* 右クリック禁止 */
+document.oncontextmenu = function() {
+  alert('右クリック禁止！');
+  return false;
+};
+
+/* カウンター（擬似的に localStorage を使用）
+   - 初期値 200123（要件）
+   - ページロード時に +1 して表示（server-less でも増える挙動を再現）
+   - また単純な "疑似アクセス" ボタンで増やせる
+*/
+function initCounter() {
+  try {
+    var key = 'ancient_counter_v1';
+    var val = parseInt(window.localStorage.getItem(key), 10);
+    if (isNaN(val) || val < 200123) {
+      val = 200123; // 初期値
+    }
+    val = val + 1; // 要件: プレビュー時に 200124 以上で増える
+    window.localStorage.setItem(key, String(val));
+    // 表示を更新
+    var el = document.getElementById('visitor_counter');
+    if (el) el.innerHTML = val;
+    // 右下に小さく本物の CGI 想定リンクを表示（非動作の想定）
+    var cgilink = document.getElementById('counter_link');
+    if (cgilink) cgilink.innerHTML = '<a href="counter.cgi">本物のカウンター (CGI想定)</a>';
+  } catch (e) {
+    // localStorage が無い環境なら単純表示
+    var el = document.getElementById('visitor_counter');
+    if (el) el.innerHTML = '200124';
+  }
+}
+
+/* キリ番報告フォームは guest.cgi に POST する（ここではフォーム動作のみ） */
+
+/* marquee の点滅（シンプルに visibility トグル） */
+var marqueeBlinkState = true;
+function initMarqueeBlink() {
+  setInterval(function(){
+    var m = document.getElementById('martext');
+    if (!m) return;
+    marqueeBlinkState = !marqueeBlinkState;
+    m.style.visibility = marqueeBlinkState ? 'visible' : 'hidden';
+  }, 400); // 400ms ごとに点滅
+}
+
+/* 2コマGIF ループ（under_construction.gif と new.gif を交互に） */
+var twoFrameIdx = 0;
+function initTwoFrameSwap() {
+  var imgs = ['under_construction.gif','new.gif'];
+  var el = document.getElementById('twogif');
+  if (!el) return;
+  setInterval(function(){
+    twoFrameIdx = (twoFrameIdx + 1) % imgs.length;
+    el.src = imgs[twoFrameIdx];
+  }, 800); // 800ms ごとに切替
+}
+
+/* マウス追従キラキラ（span 要素を生成してフェードアウト）
+   - div を使わず span を生成
+   - 古い環境に配慮して setInterval で opacity を下げる
+*/
+var starCount = 0;
+function createStar(x,y) {
+  var s = document.createElement('span'); // div 禁止 -> span を利用
+  s.className = 'star';
+  s.style.left = (x+2) + 'px';
+  s.style.top  = (y+2) + 'px';
+  s.style.opacity = 1;
+  s.style.zIndex = 9999;
+  // ランダムな星記号を使う（昔のサイトっぽく）
+  var symbols = ['✦','✧','★','☆','✺'];
+  s.appendChild(document.createTextNode(symbols[starCount % symbols.length]));
+  starCount++;
+  document.body.appendChild(s);
+
+  // フェードアウト（setInterval で古風に）
+  var alpha = 1.0;
+  var tid = setInterval(function(){
+    alpha -= 0.07; // フェード速度
+    if (alpha <= 0) {
+      clearInterval(tid);
+      try { document.body.removeChild(s); } catch(e){}
+    } else {
+      s.style.opacity = alpha;
+      // 古いIE用の滤镜（無視されてもOK）
+      try { s.style.filter = 'alpha(opacity=' + (alpha*100) + ')'; } catch(e){}
+    }
+  }, 50);
+}
+
+/* mousemove イベントハンドラ（頻度を控えめにする簡易 throttle） */
+var lastStarTime = 0;
+function onDocMouseMove(e) {
+  var now = new Date().getTime();
+  if (now - lastStarTime < 60) return; // 60ms ごとに生成上限
+  lastStarTime = now;
+  var x = e.clientX || e.pageX;
+  var y = e.clientY || e.pageY;
+  // 画面に複数生成するために少しランダムでオフセットをつける
+  var rx = x + (Math.random()*10-5);
+  var ry = y + (Math.random()*10-5);
+  createStar(rx, ry);
+}
+
+/* ページ初期化 */
+function onLoadInit() {
+  initCounter();
+  initMarqueeBlink();
+  initTwoFrameSwap();
+  /* マウス追従を有効化（古いブラウザも考慮） */
+  if (document.addEventListener) {
+    document.addEventListener('mousemove', onDocMouseMove, false);
+  } else if (document.attachEvent) {
+    document.attachEvent('onmousemove', onDocMouseMove);
+  } else {
+    document.onmousemove = onDocMouseMove;
+  }
+}
+
+/* window.onload に登録（レガシー互換） */
+if (window.addEventListener) {
+  window.addEventListener('load', onLoadInit, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload', onLoadInit);
+} else {
+  window.onload = onLoadInit;
+}
+</script>
 </head>
+
 <body>
-  <header>
-    <div class="container">
-      <div class="header-left">
-        <img class="logo" src="https://prog-8.com/images/html/advanced/main_logo.png">
-      </div>
-      <span class="fa fa-bars menu-icon"></span>
-      <div class="header-right">
-        <a href="#">レッスン</a>
-        <a href="#">新規登録</a>
-        <a href="#" class="login">ログイン</a>
-      </div>
-    </div>
-  </header>
-  <div class="top-wrapper">
-    <div class="container">
-      <h1>LEARN TO CODE.<br>LEARN TO BE CREATIVE.</h1>
-      <p>Progateはオンラインプログラミング学習サービスです。<br>初心者にもやさしいスライドとレッスンで、ウェブサービスを作りながらプログラミングを学んでいきましょう。</p>
-      <div class="btn-wrapper">
-        <a href="#" class="btn signup">新規登録はこちら</a>
-        <p>or</p>
-        <a href="#" class="btn facebook"><span class="fa fa-facebook"></span>Facebookで登録</a>
-        <a href="#" class="btn twitter"><span class="fa fa-twitter"></span>Twitterで登録</a>
-      </div>
-    </div>
-  </div>
-  <div class="lesson-wrapper">
-    <div class="container">
-      <div class="heading">
-        <h2>Learn Where to Get Started!</h2>
-      </div>
-      <div class="lessons">
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/html.png">
-            <p>HTML & CSS</p>
-          </div>
-          <p class="text-contents">ウェブページの作成に使用される言語です。HTMLとCSSを組み合わせることで、静的なページを作り上げることができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/jQuery.png">
-            <p>jQuery</p>
-          </div>
-          <p class="text-contents">素敵な動きを手軽に実装できるJavaScriptライブラリです。 アニメーション効果をつけたり、Ajax（エイジャックス）を使って外部ファイルを読み込んだりと色々なことができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/ruby.png">
-            <p>Ruby</p>
-          </div>
-          <p class="text-contents">オープンソースの動的なプログラミング言語で、 シンプルさと高い生産性を備えています。大きなWebアプリケーションから小さな日用ツールまで、さまざまなソフトウェアを作ることができます。</p>
-        </div>
-        <div class="lesson">
-          <div class="lesson-icon">
-            <img src="https://prog-8.com/images/html/advanced/php.png">
-            <p>PHP</p>
-          </div>
-          <p class="text-contents">HTMLだけではページの内容を変えることはできません。PHPはHTMLにプログラムを埋め込み、それを可能にします。</p>
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-  </div>
-  <div class="message-wrapper">
-    <div class="container">
-      <div class="heading">
-        <h2>さぁ、あなたもProgateでプログラミングを学んでみませんか?</h2>
-        <h3>Let's learn to code, learn to be creative!</h3>
-      </div>
-      <span class="btn message">さっそく開発する</span>
-    </div>
-  </div>
-  <footer>
-    <div class="container">
-      <img src="https://prog-8.com/images/html/advanced/footer_logo.png">
-      <p>Learn to Code, Learn to be Creative.</p>
-    </div>
-  </footer>
+<!-- ページ全体をテーブルで構築。ネスト多め。 -->
+<table width="780" align="center" cellpadding="0" cellspacing="0" border="0">
+  <!-- 外枠 -->
+  <tr>
+    <td>
+      <!-- 虹色罫線風 上段 -->
+      <hr size="3" color="#ff0000" noshade>
+      <hr size="3" color="#ffa500" noshade>
+      <hr size="3" color="#ffff00" noshade>
+      <hr size="3" color="#00ff00" noshade>
+      <hr size="3" color="#0000ff" noshade>
+      <hr size="3" color="#4b0082" noshade>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <!-- ヘッダー領域（さらにテーブルでネスト） -->
+      <table width="100%" cellpadding="6" cellspacing="0" border="0">
+        <tr>
+          <td align="left" valign="middle">
+            <!-- タイトルは画像（創英角ポップ体風を想定したタイトル画像） -->
+            <!-- title_pop.gif を用意しておいてください -->
+            <img src="title_pop.gif" alt="古の個人サイト" width="480" height="80" class="titleimg">
+          </td>
+
+          <td align="right" valign="middle">
+            <!-- カウンター表示（CGI想定の場所に擬似表示） -->
+            <div class="counter" style="display:inline-block;">
+              来訪者数: <span id="visitor_counter">200123</span>
+            </div>
+            <div id="counter_link" style="font-size:10px; margin-top:4px;"></div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" align="center">
+            <!-- marquee（点滅＋横スクロール） -->
+            <marquee behavior="scroll" direction="left" scrollamount="4" style="width:100%; display:block;">
+              <span id="martext" class="blink">いらっしゃいませ！！！　いらっしゃいませ！！！　いらっしゃいませ！！！</span>
+            </marquee>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- 虹色罫線（中間） -->
+  <tr>
+    <td>
+      <hr size="2" color="#ff0000" noshade>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <!-- メインコンテンツをさらに 2 列テーブルで分割 -->
+      <table width="100%" cellpadding="8" cellspacing="0" border="0">
+        <tr>
+          <!-- 左サイド（ナビ） -->
+          <td width="220" valign="top" style="border-right:3px solid #00f;">
+            <!-- 隠し1x1 gif（secret.gif）をリンクにして secret.html へ -->
+            <!-- 実際に表示させないがクリックで行けるよう画像を配置 -->
+            <a href="secret.html"><img src="secret.gif" width="1" height="1" alt="秘"></a>
+
+            <!-- ナビ一覧（古いホームページ風リンク群） -->
+            <p><b>■ ナビゲーション</b></p>
+            <ul>
+              <li><a href="guestbook.html">ゲストブック / 掲示板</a></li>
+              <li><a href="aibou_links.html">相互リンクの部屋</a></li>
+              <li><a href="footprints.html">足あと帳</a></li>
+              <li><a href="baton.html">○○お題バトン</a></li>
+              <li><a href="moe.png">自作萌え絵 (moe.png)</a></li>
+              <li><a href="http://example.com/net-manners" target="_blank">毒吐きネットマナー</a></li>
+            </ul>
+
+            <!-- キリ番報告フォーム（guest.cgi へPOST） -->
+            <p><b>■ キリ番報告</b></p>
+            <form method="post" action="guest.cgi" enctype="application/x-www-form-urlencoded" style="margin:0;">
+              あなたのHN：<br>
+              <input type="text" name="handle" size="20"><br>
+              見た番号：<br>
+              <input type="text" name="num" size="10"><br>
+              コメント：<br>
+              <textarea name="comment" rows="3" cols="20"></textarea><br>
+              <input type="submit" value="報告する">
+            </form>
+
+            <!-- 来訪者に手動でカウントを増やすボタン（見た目は古風） -->
+            <p style="margin-top:10px;">
+              <form style="margin:0;">
+                <input type="button" value="疑似アクセス +1" onclick="(function(){ try { var k='ancient_counter_v1'; var v=parseInt(localStorage.getItem(k),10)||200123; v=v+1; localStorage.setItem(k,String(v)); document.getElementById('visitor_counter').innerHTML=v; } catch(e){ } })();">
+              </form>
+            </p>
+
+            <!-- 200x40 同盟バナーを横並び -->
+            <p><b>■ 同盟リンク</b></p>
+            <table cellpadding="2" cellspacing="0" border="0">
+              <tr>
+                <td><img src="alliance1.gif" alt="同盟1" class="ally"></td>
+                <td><img src="alliance2.gif" alt="同盟2" class="ally"></td>
+                <td><img src="alliance3.gif" alt="同盟3" class="ally"></td>
+              </tr>
+            </table>
+
+          </td>
+
+          <!-- 右メイン（本文） -->
+          <td valign="top">
+            <!-- 工事中 / NEW 2コマGIF をループ表示 -->
+            <p align="center">
+              <img id="twogif" src="under_construction.gif" alt="工事中 / NEW" width="120" height="40" style="vertical-align:middle;">
+            </p>
+
+            <!-- 中央のメイン画像（萌え絵）をセンター表示 -->
+            <p align="center" style="margin-top:12px;">
+              <img src="moe.png" alt="自作萌え絵" style="border:2px solid #000;">
+            </p>
+
+            <!-- コンテンツ説明（サンプルテキスト） -->
+            <h3>最新のお知らせ</h3>
+            <p>ようこそ。ここは古き良き個人ホームページの雰囲気を再現した場所です。コンテンツは随時更新予定（手書き感を大切に）。</p>
+
+            <!-- ゲストブック / 相互リンク など外部CGI 想定のリンク群 -->
+            <p>
+              <a href="guestbook.html">■ ゲストブックを見る</a><br>
+              <a href="links.html">■ 相互リンク一覧</a><br>
+              <a href="footprints.html">■ 足あと帳</a><br>
+            </p>
+
+            <!-- さらにネストしたテーブルでフッター情報 -->
+            <table width="100%" cellpadding="4" cellspacing="0" border="0">
+              <tr>
+                <td style="border-top:2px solid #ccc;">
+                  <small>Copyright &copy; 古の個人サイト All Rights Reserved.</small>
+                </td>
+                <td align="right" style="border-top:2px solid #ccc;">
+                  <small>HTML on Table Layout ・ Retro Style</small>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- 虹色罫線（下段） -->
+  <tr>
+    <td>
+      <hr size="3" color="#4b0082" noshade>
+      <hr size="3" color="#0000ff" noshade>
+      <hr size="3" color="#00ff00" noshade>
+      <hr size="3" color="#ffff00" noshade>
+      <hr size="3" color="#ffa500" noshade>
+      <hr size="3" color="#ff0000" noshade>
+    </td>
+  </tr>
+
+</table>
+
+<!-- 古いブラウザでも良いように簡単なNOSCRIPTメッセージ -->
+<noscript>
+  <p style="text-align:center; color:#ff0000;">※ JavaScript を有効にすると更に古臭い演出が動きます。</p>
+</noscript>
+
 </body>
 </html>
