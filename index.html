@@ -1,60 +1,101 @@
 <html>
 <head>
-<title>古の個人サイト - Windows風</title>
+<title>古の個人サイト</title>
 <style type="text/css">
 body {
-  background: url("clouds.bmp");
-  font-family: "ＭＳ ゴシック", monospace;
-  font-size: 12px;
-  color: black;
-}
-a { color:#0000ff; text-decoration:underline; }
-a:visited { color:#800080; }
-.window {
-  border: 2px outset #c0c0c0;
-  background: #ffffff;
-  padding: 5px;
-  margin: 10px;
-}
-.titlebar {
-  background: #000080;
-  color: white;
-  font-weight: bold;
-  padding: 2px;
+  background-color: #224433;
+  background-image: url("bg_pattern.gif");
+  color: #00ff66;
+  font-family: "ＭＳ Ｐゴシック", Osaka, sans-serif;
   font-size: 12px;
 }
-.button {
-  border: 2px outset #c0c0c0;
-  background: #e0e0e0;
-  padding: 2px 6px;
-  font-size: 12px;
-}
+a { color:#00ff00; text-decoration:none; }
+a:hover { color:#ff00ff; background:#000000; }
+.blink { text-decoration:blink; }
 </style>
+<script language="JavaScript">
+// レインボーキラキラカーソル
+var rainbowColors = ["#ff0000","#ff7f00","#ffff00","#00ff00","#0000ff","#4b0082","#8b00ff"];
+document.onmousemove = function(e){
+  var star = document.createElement("span");
+  star.innerHTML="✧";
+  star.style.position="absolute";
+  star.style.left = (e.pageX)+"px";
+  star.style.top = (e.pageY)+"px";
+  star.style.color= rainbowColors[Math.floor(Math.random()*rainbowColors.length)];
+  star.style.fontSize="12px";
+  star.style.pointerEvents="none";
+  document.body.appendChild(star);
+  setTimeout(function(){ if(star.parentNode){ star.parentNode.removeChild(star);} },300);
+};
+// 右クリック禁止
+document.oncontextmenu = function(){ alert('右クリック禁止！'); return false; };
+// 未実装リンク用
+function notExist(){ alert("存在しないよ！"); }
+</script>
 </head>
 
 <body>
 
-<!-- デスクトップ風に -->
-<table width="100%" height="100%">
-<tr><td valign="top">
+<!-- 全体テーブル -->
+<table border="5" bordercolor="#ffffff" cellspacing="0" cellpadding="5" align="center" width="240">
+<tr><td align="center" bgcolor="#002200">
 
-<img src="mycomp.ico" width="32" height="32"><br>
-マイコンピュータ<br><br>
-<img src="folder.ico" width="32" height="32"><br>
-古の個人サイト<br>
+<!-- タイトル -->
+<font size="5" color="#00ff00" style="text-shadow:2px 2px #000000;"><b>古の個人サイト</b></font><br>
+<img src="new.gif"> <img src="under_construction.gif"><br>
 
-</td><td valign="top">
+<!-- マーキー -->
+<marquee behavior="alternate" scrollamount="5">
+<font class="blink" color="#00ff66" size="4">★★★ いらっしゃいませ！！！ ★★★</font>
+</marquee>
 
-<!-- ウィンドウ風 -->
-<div class="window">
-<div class="titlebar">古の個人サイト</div>
-ようこそ！ここは <b>90年代風</b> の個人ホームページです。<br>
-<hr>
-<a href="profile.html"><span class="button">プロフィール</span></a><br><br>
-<a href="diary.html"><span class="button">日記</span></a><br><br>
-<a href="photo.html"><span class="button">写真置き場</span></a><br><br>
-<a href="links.html"><span class="button">リンク集</span></a><br>
-</div>
+<hr size="5" color="#ffffff" noshade>
+
+<!-- カウンター -->
+あなたは <img src="counter.cgi?start=200123"> 人目の訪問者です☆
+
+<hr size="5" color="#ffffff" noshade>
+
+<!-- MENU -->
+<table border="1" bordercolor="#ffffff" cellspacing="0" cellpadding="3" width="100%">
+<tr><td align="center" bgcolor="#113322">
+<font color="#00ff00">★ MENU ★</font>
+</td></tr>
+<tr><td>
+<ul>
+<li><a href="profile.html">プロフィール <img src="new.gif"></a></li>
+<li><a href="photo.html">写真置き場 <img src="under_construction.gif"></a></li>
+<li><a href="https://note.com/42uk1" target="_blank">note</a></li>
+<li><a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a></li>
+<li><a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a></li>
+<li><a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ</a></li>
+<li><a href="javascript:notExist()">チャットルーム</a></li>
+<li><a href="javascript:notExist()">ゲーム置き場</a></li>
+</ul>
+</td></tr>
+</table>
+
+<hr size="5" color="#ffffff" noshade>
+
+<!-- 画像展示 -->
+<center>
+<img src="moe.png" width="200"><br>
+<blink><font color="#00ff00">☆自作萌え絵展示中☆</font></blink>
+</center>
+
+<hr size="5" color="#ffffff" noshade>
+
+<!-- 各種リンク -->
+<a href="guest.cgi">キリ番報告フォーム</a><br>
+<a href="guestbook.html">ゲストブック</a><br>
+<a href="bbs.html">掲示板</a><br>
+<a href="links.html">相互リンクの部屋</a><br>
+<a href="footprint.html">足あと帳</a><br>
+<a href="http://www.kusoripu.com" target="_blank">毒吐きネットマナー</a><br>
+
+<!-- 隠しリンク -->
+<a href="secret.html"><img src="secret.gif" width="1" height="1"></a>
 
 </td></tr>
 </table>
