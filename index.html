@@ -42,15 +42,19 @@ img { max-width: 100%; height: auto; }
 .welcome {
   font-size: 18px;
   font-weight: bold;
-  color: #5b695c; /* 本文と同系色 */
-  text-shadow: 0 0 5px #5b695c, 0 0 10px #5b695c;
-  animation: blinkColor 1s infinite;
+  color: #5b695c; /* 基本色 */
+  text-shadow: none; /* ぼやけ不要 */
+  animation: flashy 1s infinite alternate;
   display: inline-block;
 }
 
-@keyframes blinkColor {
-  0%, 100% { text-shadow: 0 0 5px #5b695c, 0 0 10px #5b695c; }
-  50% { text-shadow: 0 0 15px #5b695c, 0 0 25px #5b695c; }
+@keyframes flashy {
+  0%   { color: #5b695c; }
+  20%  { color: #ff3366; }
+  40%  { color: #ff9900; }
+  60%  { color: #33ccff; }
+  80%  { color: #33ff99; }
+  100% { color: #5b695c; }
 }
 
 
