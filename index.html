@@ -61,9 +61,9 @@ img { max-width: 100%; height: auto; }
 /* スマホ調整 */
 @media (max-width: 480px) {
   .main-table {
-    width: 85%;       /* 横幅をさらに小さくする */
-    max-width: 200px; /* 最大幅を小さく */
-    margin: 0 auto;   /* 中央寄せ */
+    width: 80%;       /* 横幅を縮小 */
+    max-width: 260px; /* スマホ時の最大幅 */
+    border-width: 3px; /* 枠を細くして目立たなくする */
   }
 }
 
@@ -71,6 +71,16 @@ img { max-width: 100%; height: auto; }
 .main-table td {
   text-align: center;
 }
+
+.main-table {
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 5px solid #ffffff;  /* 枠線はここで設定 */
+  border-collapse: collapse;
+}
+
 
 </style>
 
