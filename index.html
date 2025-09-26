@@ -60,9 +60,11 @@ img { max-width: 100%; height: auto; }
 
 /* スマホ調整 */
 @media (max-width: 480px) {
-  .main-table { width: 95%; max-width: 320px; }
-  .wordart { font-size: 28px; }
-  .welcome { font-size: 16px; }
+  .main-table {
+    width: 95%;
+    max-width: 320px;
+    background: rgba(255,255,255,0.6); /* スマホ用に少し透過 */
+  }
 }
 
 /* テーブル内の中央寄せ */
