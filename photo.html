@@ -1,61 +1,129 @@
 <html>
 <head>
 <title>写真置き場</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* 全体設定 */
 body {
   background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
   background-size: cover;
-  color: #5b695c;
-  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
-  font-size: 14px;
+  font-family: "Yu Gothic", "游ゴシック体", sans-serif;
+  color: #333;
   margin:0;
   padding:0;
-  text-align: center;
+  text-align:center;
 }
 
-/* テーブル */
+/* メイン枠 */
 .main-table {
   width: 95%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px auto;
-  background: #ffffff;
-  border: 5px solid #ffffff;
+  background: #fff;
+  border: 5px solid #fff;
   border-collapse: collapse;
-}
-.main-table td {
-  text-align: center;
+  padding: 20px;
 }
 
-/* グリッド風配置 */
+/* アイコンと投稿情報 */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+.stats {
+  display: flex;
+  gap: 15px;
+}
+.stat {
+  text-align: center;
+}
+.stat strong {
+  display: block;
+  font-size: 16px;
+}
+
+/* 自己紹介 */
+.bio {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ハイライト丸 */
+.highlights {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.highlight {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #eee;
+  border: 2px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+/* グリッド写真 */
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3列 */
-  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
 }
 .photo-grid img {
   width: 100%;
-  aspect-ratio: 1/1; /* 正方形に切り取り */
+  aspect-ratio: 1/1;
   object-fit: cover;
-  border: 1px solid #ccc;
 }
 
-/* スマホ調整 */
+/* スマホ用 */
 @media (max-width: 480px) {
-  .photo-grid {
-    grid-template-columns: repeat(2, 1fr); /* スマホは2列 */
-  }
+  .profile-header { flex-direction: column; gap: 10px; }
+  .stats { justify-content: center; }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 </style>
 </head>
-
 <body>
-<table class="main-table" cellspacing="0" cellpadding="5">
+
+<table class="main-table">
   <tr><td>
 
-    <!-- 写真一覧 -->
+    <!-- ヘッダー -->
+    <div class="profile-header">
+      <img src="myicon.jpg" class="profile-icon">
+      <div class="stats">
+        <div class="stat"><strong>50</strong>投稿</div>
+        <div class="stat"><strong>1</strong>フォロワー</div>
+        <div class="stat"><strong>1</strong>フォロー中</div>
+      </div>
+    </div>
+
+    <!-- 自己紹介 -->
+    <div class="bio">
+      ここに自己紹介文を入れます。<br>
+      趣味・好きなことなど自由に書けます。
+    </div>
+
+    <!-- ハイライト -->
+    <div class="highlights">
+      <div class="highlight">旅行</div>
+      <div class="highlight">日常</div>
+      <div class="highlight">食べ物</div>
+    </div>
+
+    <!-- グリッド写真 -->
     <div class="photo-grid">
       <img src="photo1.jpg">
       <img src="photo2.jpg">
@@ -63,17 +131,10 @@ body {
       <img src="photo4.jpg">
       <img src="photo5.jpg">
       <img src="photo6.jpg">
-      <img src="photo7.jpg">
-      <img src="photo8.jpg">
-      <img src="photo9.jpg">
     </div>
-
-    <hr size="5" color="#5b695c" noshade>
-
-    <!-- 戻るリンク -->
-    <a href="index.html">← トップに戻る</a>
 
   </td></tr>
 </table>
+
 </body>
 </html>
