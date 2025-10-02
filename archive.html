@@ -1,3 +1,8 @@
+---
+layout: default
+title: "アーカイブ"
+---
+
 <html>
 <head>
 <title>アーカイブ</title>
@@ -31,16 +36,16 @@ body {
 .archive-links {
   margin: 20px 0;
   display: flex;
-  overflow-x: auto;      /* 横スクロール可能 */
-  white-space: nowrap;   /* 改行させず横並び */
+  overflow-x: auto;
+  white-space: nowrap;
   padding: 8px;
   gap: 10px;
-  scrollbar-width: thin; /* Firefox用 */
+  scrollbar-width: thin;
   scrollbar-color: #d9e0be #f0f4e6;
 }
 
 .archive-links a {
-  flex: 0 0 auto;  /* 幅を固定してスクロールさせる */
+  flex: 0 0 auto;
   padding: 6px 14px;
   background: #f0f4e6;
   border: 1px solid #d9e0be;
@@ -54,7 +59,7 @@ body {
   color: #333;
 }
 
-/* スクロールバーのデザイン（Webkit用） */
+/* スクロールバー（Webkit用） */
 .archive-links::-webkit-scrollbar {
   height: 6px;
 }
@@ -104,53 +109,24 @@ body {
 
 <!-- 記事リンク一覧（横スクロール対応） -->
 <div class="archive-links">
-  <a href="#post1">映画『○○』感想</a>
-  <a href="#post2">本『△△』レビュー</a>
-  <a href="#post3">ライブレポ</a>
-  <a href="#post4">展示会レポ</a>
-  <a href="#post5">音楽アルバム感想</a>
+  {% for post in site.posts %}
+    <a href="#post{{ forloop.index }}">{{ post.title }}</a>
+  {% endfor %}
 </div>
 
 <hr size="5" color="#5b695c" noshade>
 
-<!-- 各記事 -->
-<div id="post1" class="archive-card">
-  <h3>映画『○○』感想</h3>
+<!-- 各記事カード -->
+{% for post in site.posts %}
+<div id="post{{ forloop.index }}" class="archive-card">
+  <h3>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</h3>
   <p>
-    ここに感想本文（300〜500文字程度）を入れます。<br>
-    ページ内リンクなので、直接 #post1 のURLをシェア可能です。
+    {{ post.excerpt | strip_html | truncate: 200 }}
+    <br>
+    <a href="{{ post.url }}">続きを読む →</a>
   </p>
 </div>
-
-<div id="post2" class="archive-card">
-  <h3>本『△△』レビュー</h3>
-  <p>
-    ここに本文を入れます。シンプルに読めるカード形式。<br>
-    note風にまとめられます。
-  </p>
-</div>
-
-<div id="post3" class="archive-card">
-  <h3>ライブレポ</h3>
-  <p>
-    ここに本文を入れます。音楽や現場の雰囲気を記録。<br>
-    優しいデザインで読みやすいです。
-  </p>
-</div>
-
-<div id="post4" class="archive-card">
-  <h3>展示会レポ</h3>
-  <p>
-    ここに本文を入れます。展示の雰囲気や印象を書き留めます。
-  </p>
-</div>
-
-<div id="post5" class="archive-card">
-  <h3>音楽アルバム感想</h3>
-  <p>
-    ここに本文を入れます。聞いたアルバムの感想やおすすめポイントを紹介。
-  </p>
-</div>
+{% endfor %}
 
 <hr size="5" color="#5b695c" noshade>
 <a href="index.html">← トップに戻る</a>
@@ -159,9 +135,3 @@ body {
 </table>
 </body>
 </html>
-<ul>
-  {% for post in site.folder %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
-
