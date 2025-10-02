@@ -8,7 +8,6 @@ title: "アーカイブ"
 <title>アーカイブ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* 背景や文字などは統一 */
 body {
   background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
   background-size: cover;
@@ -19,57 +18,15 @@ body {
   text-align: center;
 }
 
-.main-table {
+.container {
   width: 90%;
   max-width: 700px;
   margin: 20px auto;
+  padding: 10px;
   background: #ffffff;
   border: 5px solid #ffffff;
-  border-collapse: collapse;
-}
-
-.main-table td {
-  text-align: center;
-}
-
-/* リンク一覧（横スクロール可能） */
-.archive-links {
-  margin: 20px 0;
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 8px;
-  gap: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #d9e0be #f0f4e6;
-}
-
-.archive-links a {
-  flex: 0 0 auto;
-  padding: 6px 14px;
-  background: #f0f4e6;
-  border: 1px solid #d9e0be;
   border-radius: 12px;
-  text-decoration: none;
-  color: #5b695c;
-  font-size: 14px;
-}
-.archive-links a:hover {
-  background: #d9e0be;
-  color: #333;
-}
-
-/* スクロールバー（Webkit用） */
-.archive-links::-webkit-scrollbar {
-  height: 6px;
-}
-.archive-links::-webkit-scrollbar-track {
-  background: #f0f4e6;
-  border-radius: 10px;
-}
-.archive-links::-webkit-scrollbar-thumb {
-  background-color: #d9e0be;
-  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 /* アーカイブ記事カード */
@@ -78,7 +35,6 @@ body {
   border-radius: 12px;
   padding: 15px 20px;
   margin: 20px auto;
-  max-width: 600px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   text-align: left;
   line-height: 1.7;
@@ -101,37 +57,24 @@ body {
 </head>
 
 <body>
-<table class="main-table" cellspacing="0" cellpadding="5">
-<tr><td>
+<div class="container">
+  <h1>アーカイブ</h1>
+  <hr size="5" color="#5b695c" noshade>
 
-<!-- タイトル -->
-<div class="wordart">アーカイブ</div>
-
-<!-- 記事リンク一覧（横スクロール対応） -->
-<div class="archive-links">
+  <!-- 各記事カード -->
   {% for post in site.posts %}
-    <a href="#post{{ forloop.index }}">{{ post.title }}</a>
+  <div class="archive-card">
+    <h3>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</h3>
+    <p>
+      {{ post.excerpt | strip_html | truncate: 200 }}
+      <br>
+      <a href="{{ post.url }}">続きを読む →</a>
+    </p>
+  </div>
   {% endfor %}
+
+  <hr size="5" color="#5b695c" noshade>
+  <a href="index.html">← トップに戻る</a>
 </div>
-
-<hr size="5" color="#5b695c" noshade>
-
-<!-- 各記事カード -->
-{% for post in site.posts %}
-<div id="post{{ forloop.index }}" class="archive-card">
-  <h3>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</h3>
-  <p>
-    {{ post.excerpt | strip_html | truncate: 200 }}
-    <br>
-    <a href="{{ post.url }}">続きを読む →</a>
-  </p>
-</div>
-{% endfor %}
-
-<hr size="5" color="#5b695c" noshade>
-<a href="index.html">← トップに戻る</a>
-
-</td></tr>
-</table>
 </body>
 </html>
