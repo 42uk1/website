@@ -29,6 +29,8 @@ a:visited { color:#b4abf3; }
 a:hover { color:#a2c8fc; background:#ffffff; }
 a:active { color:#ff6600; }
 }
+
+
   
 /* アイコンと投稿情報 */
 .profile-header {
@@ -101,6 +103,25 @@ a:active { color:#ff6600; }
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
+</head>
+  <script>
+// ポップアップ
+function noExist(){ alert("存在しないよ！"); }
+
+// レインボーカラーキラキラカーソル
+document.onmousemove = function(e){
+  var star = document.createElement("span");
+  star.innerHTML="✧";
+  star.style.position="absolute";
+  star.style.left = e.pageX + "px";
+  star.style.top = e.pageY + "px";
+  star.style.color = "hsl(" + Math.random()*360 + ",100%,60%)";
+  star.style.fontSize = "12px";
+  star.style.pointerEvents = "none";
+  document.body.appendChild(star);
+  setTimeout(function(){star.remove()},400);
+};
+</script>
 </head>
 <body>
 
