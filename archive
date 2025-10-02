@@ -1,0 +1,17 @@
+<h2>アーカイブ一覧</h2>
+<ul>
+  <li><a href="#post1">映画『○○』感想</a></li>
+  <li><a href="#post2">ドラマ『△△』感想</a></li>
+</ul>
+
+<hr>
+
+<div id="post1" class="archive-card">
+  <h3>映画『○○』感想</h3>
+  <p>300〜500文字くらいの感想文をここに書く…</p>
+</div>
+
+<div id="post2" class="archive-card">
+  <h3>ドラマ『△△』感想</h3>
+  <p>こちらも同じく文章を入れる…</p>
+</div>
