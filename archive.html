@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: none
 title: "アーカイブ"
 ---
 
@@ -12,42 +12,46 @@ body {
   background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
   background-size: cover;
   color: #5b695c;
-  font-family: "游明朝", "Yu Mincho", "MS 明朝", serif;
+  font-family: "YuMincho", "游明朝", "MS Mincho", serif; /* 明朝体に固定 */
   margin:0;
   padding:0;
   text-align: center;
 }
 
-.main-table {
+.container {
   width: 90%;
   max-width: 700px;
   margin: 20px auto;
+  padding: 15px;
   background: #ffffff;
   border: 5px solid #ffffff;
-  border-collapse: collapse;
-}
-
-.main-table td {
-  text-align: left;
-  padding: 15px;
+  border-radius: 8px;
 }
 
 .archive-title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  text-align: center;
-  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .archive-item {
   border-bottom: 1px solid #d9e0be;
-  padding: 10px 0;
+  padding: 12px 0;
+  text-align: left;
 }
 
 .archive-item h3 {
   margin: 0 0 5px 0;
   font-size: 16px;
   color: #5b695c;
+}
+
+.archive-item a {
+  color: #5b695c;
+  text-decoration: none;
+}
+.archive-item a:hover {
+  text-decoration: underline;
 }
 
 .archive-item p {
@@ -59,26 +63,24 @@ body {
 </head>
 
 <body>
-<table class="main-table" cellspacing="0" cellpadding="0">
-<tr><td>
+<div class="container">
+  <div class="archive-title">アーカイブ</div>
+  <hr size="3" color="#5b695c" noshade>
 
-<div class="archive-title">アーカイブ</div>
-<hr size="3" color="#5b695c" noshade>
+  <!-- 各記事一覧 -->
+  {% for post in site.posts %}
+  <div class="archive-item">
+    <h3>{{ post.date | date: "%Y-%m-%d" }}　
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </h3>
+    <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+  </div>
+  {% endfor %}
 
-<!-- 各記事をシンプル表示 -->
-{% for post in site.posts %}
-<div class="archive-item">
-  <h3>{{ post.date | date: "%Y-%m-%d" }}　<a href="{{ post.url }}">{{ post.title }}</a></h3>
-  <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+  <hr size="3" color="#5b695c" noshade>
+  <div style="text-align:center;">
+    <a href="index.html">← トップに戻る</a>
+  </div>
 </div>
-{% endfor %}
-
-<hr size="3" color="#5b695c" noshade>
-<div style="text-align:center;">
-  <a href="index.html">← トップに戻る</a>
-</div>
-
-</td></tr>
-</table>
 </body>
 </html>
