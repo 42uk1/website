@@ -159,3 +159,18 @@ body {
 </table>
 </body>
 </html>
+<div id="archive-list"></div>
+<script>
+fetch("posts.json")
+  .then(response => response.json())
+  .then(posts => {
+    let container = document.getElementById("archive-list");
+    posts.forEach(p => {
+      let link = document.createElement("a");
+      link.href = p.url;
+      link.textContent = p.title;
+      link.style.display = "block";
+      container.appendChild(link);
+    });
+  });
+</script>
