@@ -27,19 +27,36 @@ body {
   text-align: center;
 }
 
-/* リンク一覧（ボタン風） */
+/* リンク一覧（横スクロール可能） */
 .archive-links {
   margin: 20px 0;
   display: flex;
-  overflow-x: auto;   /* 横スクロール可能 */
-  white-space: nowrap; /* 改行させず横並び */
-  padding: 5px;
-  scrollbar-width: thin;        /* Firefox */
-  scrollbar-color: #d9e0be #f0f4e6; /* スクロールバー色 */
+  overflow-x: auto;      /* 横スクロール可能 */
+  white-space: nowrap;   /* 改行させず横並び */
+  padding: 8px;
+  gap: 10px;
+  scrollbar-width: thin; /* Firefox用 */
+  scrollbar-color: #d9e0be #f0f4e6;
 }
 
+.archive-links a {
+  flex: 0 0 auto;  /* 幅を固定してスクロールさせる */
+  padding: 6px 14px;
+  background: #f0f4e6;
+  border: 1px solid #d9e0be;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #5b695c;
+  font-size: 14px;
+}
+.archive-links a:hover {
+  background: #d9e0be;
+  color: #333;
+}
+
+/* スクロールバーのデザイン（Webkit用） */
 .archive-links::-webkit-scrollbar {
-  height: 6px; /* 横スクロールバーの高さ */
+  height: 6px;
 }
 .archive-links::-webkit-scrollbar-track {
   background: #f0f4e6;
@@ -85,13 +102,13 @@ body {
 <!-- タイトル -->
 <div class="wordart">アーカイブ</div>
 
-<!-- 記事リンク一覧 -->
+<!-- 記事リンク一覧（横スクロール対応） -->
 <div class="archive-links">
   <a href="#post1">映画『○○』感想</a>
   <a href="#post2">本『△△』レビュー</a>
   <a href="#post3">ライブレポ</a>
-
-  
+  <a href="#post4">展示会レポ</a>
+  <a href="#post5">音楽アルバム感想</a>
 </div>
 
 <hr size="5" color="#5b695c" noshade>
@@ -118,6 +135,20 @@ body {
   <p>
     ここに本文を入れます。音楽や現場の雰囲気を記録。<br>
     優しいデザインで読みやすいです。
+  </p>
+</div>
+
+<div id="post4" class="archive-card">
+  <h3>展示会レポ</h3>
+  <p>
+    ここに本文を入れます。展示の雰囲気や印象を書き留めます。
+  </p>
+</div>
+
+<div id="post5" class="archive-card">
+  <h3>音楽アルバム感想</h3>
+  <p>
+    ここに本文を入れます。聞いたアルバムの感想やおすすめポイントを紹介。
   </p>
 </div>
 
