@@ -1,17 +1,125 @@
-<h2>アーカイブ一覧</h2>
-<ul>
-  <li><a href="#post1">映画『○○』感想</a></li>
-  <li><a href="#post2">ドラマ『△△』感想</a></li>
-</ul>
+<html>
+<head>
+<title>アーカイブ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* 背景や文字などは統一 */
+body {
+  background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #5b695c;
+  font-family: "游明朝", "Yu Mincho", "MS 明朝", serif;
+  margin:0;
+  padding:0;
+  text-align: center;
+}
 
-<hr>
+.main-table {
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 5px solid #ffffff;
+  border-collapse: collapse;
+}
 
+.main-table td {
+  text-align: center;
+}
+
+/* リンク一覧（ボタン風） */
+.archive-links {
+  margin: 20px 0;
+}
+.archive-links a {
+  display: inline-block;
+  margin: 5px;
+  padding: 6px 12px;
+  background: #f0f4e6;
+  border: 1px solid #d9e0be;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #5b695c;
+  font-size: 14px;
+}
+.archive-links a:hover {
+  background: #d9e0be;
+  color: #333;
+}
+
+/* アーカイブ記事カード */
+.archive-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: left;
+  line-height: 1.7;
+}
+
+.archive-card h3 {
+  margin-top: 0;
+  color: #5b695c;
+  font-size: 18px;
+  border-bottom: 2px solid #d9e0be;
+  padding-bottom: 5px;
+}
+
+.archive-card p {
+  margin: 10px 0 0;
+  color: #444;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<table class="main-table" cellspacing="0" cellpadding="5">
+<tr><td>
+
+<!-- タイトル -->
+<div class="wordart">アーカイブ</div>
+
+<!-- 記事リンク一覧 -->
+<div class="archive-links">
+  <a href="#post1">映画『○○』感想</a>
+  <a href="#post2">本『△△』レビュー</a>
+  <a href="#post3">ライブレポ</a>
+</div>
+
+<hr size="5" color="#5b695c" noshade>
+
+<!-- 各記事 -->
 <div id="post1" class="archive-card">
   <h3>映画『○○』感想</h3>
-  <p>300〜500文字くらいの感想文をここに書く…</p>
+  <p>
+    ここに感想本文（300〜500文字程度）を入れます。<br>
+    ページ内リンクなので、直接 #post1 のURLをシェア可能です。
+  </p>
 </div>
 
 <div id="post2" class="archive-card">
-  <h3>ドラマ『△△』感想</h3>
-  <p>こちらも同じく文章を入れる…</p>
+  <h3>本『△△』レビュー</h3>
+  <p>
+    ここに本文を入れます。シンプルに読めるカード形式。<br>
+    note風にまとめられます。
+  </p>
 </div>
+
+<div id="post3" class="archive-card">
+  <h3>ライブレポ</h3>
+  <p>
+    ここに本文を入れます。音楽や現場の雰囲気を記録。<br>
+    優しいデザインで読みやすいです。
+  </p>
+</div>
+
+<hr size="5" color="#5b695c" noshade>
+<a href="index.html">← トップに戻る</a>
+
+</td></tr>
+</table>
+</body>
+</html>
