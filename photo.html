@@ -1,37 +1,132 @@
 <html>
 <head>
-<title>写真置き場 - アズキの部屋</title>
+<title>プロフィール</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
 <style>
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 8px;
-  margin: 10px;
+/* 全体設定 */
+body {
+  background: url("d08373ad7c729ad769d52b247538209d.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #5b695c;
+  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
+  font-size: 14px;
+  margin:0;
+  padding:0;
+  text-align: center;
 }
-.photo-grid img {
-  width: 100%;
-  border-radius: 6px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+
+/* タイトル */
+.wordart {
+  font-size: 42px;
+  font-weight: bold;
+  color: #555555; /* グレー */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(85,85,85,0.4);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
+
+/* リンク色 */
+a:link { color:#5b695c; text-decoration:none; }
+a:visited { color:#b4abf3; }
+a:hover { color:#a2c8fc; background:#ffffff; }
+a:active { color:#ff6600; }
+
+/* 点滅用（必要なら） */
+.blink { animation: blink 1s step-start infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* レスポンシブ画像 */
+img { max-width: 100%; height: auto; }
+
+/* ウェルカム文字アニメーション */
+.welcome {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5b695c; /* 基本色 */
+  text-shadow: none; /* ぼやけ不要 */
+  animation: flashy 1s infinite alternate;
+  display: inline-block;
+}
+
+@keyframes flashy {
+  0%   { color: #5b695c; }
+  20%  { color: #ff3366; }
+  40%  { color: #ff9900; }
+  60%  { color: #33ccff; }
+  80%  { color: #33ff99; }
+  100% { color: #5b695c; }
+}
+
+
+/* スマホ調整 */
+@media (max-width: 480px) {
+  .main-table {
+    width: 80%;       /* 横幅を縮小 */
+    max-width: 260px; /* スマホ時の最大幅 */
+    border-width: 3px; /* 枠を細くして目立たなくする */
+  }
+}
+
+/* テーブル内の中央寄せ */
+.main-table td {
+  text-align: center;
+}
+
+.main-table {
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  background: #ffffff;
+  border: 5px solid #ffffff;  /* 枠線はここで設定 */
+  border-collapse: collapse;
+}
+
+
 </style>
+
+<script>
+// ポップアップ
+function noExist(){ alert("存在しないよ！"); }
+
+// レインボーカラーキラキラカーソル
+document.onmousemove = function(e){
+  var star = document.createElement("span");
+  star.innerHTML="✧";
+  star.style.position="absolute";
+  star.style.left = e.pageX + "px";
+  star.style.top = e.pageY + "px";
+  star.style.color = "hsl(" + Math.random()*360 + ",100%,60%)";
+  star.style.fontSize = "12px";
+  star.style.pointerEvents = "none";
+  document.body.appendChild(star);
+  setTimeout(function(){star.remove()},400);
+};
+</script>
 </head>
+
 <body>
 <table class="main-table" cellspacing="0" cellpadding="5">
   <tr><td>
+  <!-- タイトル -->
     <div class="wordart">写真置き場</div>
+    <img src="1015.jpg" width="200"><br>
 
     <hr size="5" color="#5b695c" noshade>
 
-    <div class="photo-grid">
-      <img src="photo1.jpg">
-      <img src="photo2.jpg">
-      <img src="photo3.jpg">
-      <img src="photo4.jpg">
+    <!-- 写真一覧 -->
+    <div style="text-align:center; line-height:2;">
+      <img src="photo1.jpg" width="150" style="margin:5px;">
+      <img src="photo2.jpg" width="150" style="margin:5px;">
+      <img src="photo3.jpg" width="150" style="margin:5px;"><br>
+      <img src="photo4.jpg" width="150" style="margin:5px;">
+      <img src="photo5.jpg" width="150" style="margin:5px;">
+      <img src="photo6.jpg" width="150" style="margin:5px;">
     </div>
 
     <hr size="5" color="#5b695c" noshade>
+
+
+    <!-- 戻るリンク -->
     <a href="index.html">← トップに戻る</a>
   </td></tr>
 </table>
