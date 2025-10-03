@@ -5,95 +5,58 @@
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  /* 全体設定 */
-  body {
-    background-color: #caf5d9;
-    color: #5b695c;
-    font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
-    font-size: 14px;
-    margin:0;
-    padding:0;
-    text-align: center;
-  }
-
-  /* タイトル */
-  .wordart {
-    font-size: 42px;
-    font-weight: bold;
-    color: #555555;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(85,85,85,0.4);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  /* リンク色 */
-  a:link { color:#5b695c; text-decoration:none; }
-  a:visited { color:#b4abf3; }
-  a:hover { color:#a2c8fc; background:#ffffff; }
-  a:active { color:#ff6600; }
-
-  /* レスポンシブ画像 */
-  img { max-width: 100%; height: auto; }
-
-  /* スマホ調整 */
-  @media (max-width: 480px) {
-    .main-table {
-      width: 80%;
-      max-width: 260px;
-      border-width: 3px;
+    body {
+      background-color: #caf5d9;
+      color: #5b695c;
+      font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
-  }
 
-  /* テーブル */
-  .main-table {
-    width: 90%;
-    max-width: 400px;
-    margin: 20px auto;
-    background: #ffffff;
-    border: 5px solid #ffffff;
-    border-collapse: collapse;
-  }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+    }
 
-  .main-table td {
-    text-align:center;
-  }
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    a { color:#5b695c; text-decoration:none; }
+    a:hover { color:#a2c8fc; }
+
+    .content {
+      text-align: left;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    hr {
+      margin: 30px 0;
+      border: none;
+      border-top: 2px solid #5b695c;
+    }
   </style>
-
-  <script>
-  // レインボーカラーキラキラカーソル
-  document.onmousemove = function(e){
-    var star = document.createElement("span");
-    star.innerHTML="✧";
-    star.style.position="absolute";
-    star.style.left = e.pageX + "px";
-    star.style.top = e.pageY + "px";
-    star.style.color = "hsl(" + Math.random()*360 + ",100%,60%)";
-    star.style.fontSize = "12px";
-    star.style.pointerEvents = "none";
-    document.body.appendChild(star);
-    setTimeout(function(){star.remove()},400);
-  };
-  </script>
 </head>
 
 <body>
-<table class="main-table" cellspacing="0" cellpadding="5">
-<tr><td>
+  <div class="container">
+    <h1>{{ page.title }}</h1>
 
-  <!-- タイトル -->
-  <div class="wordart">{{ page.title }}</div>
+    <div class="content">
+      {{ content }}
+    </div>
 
-  <!-- Markdown の本文をここに読み込む -->
-  <div style="text-align:left; line-height:1.8; font-size:14px; padding:10px;">
-    {{ content }}
+    <hr>
+    <a href="/index.html">← トップに戻る</a>
   </div>
-
-  <hr size="5" color="#5b695c" noshade>
-
-  <!-- 戻るリンク -->
-  <a href="/index.html">← トップに戻る</a>
-
-</td></tr>
-</table>
 </body>
 </html>
