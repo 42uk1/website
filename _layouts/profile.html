@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>プロフィール</title>
+<title>{{ page.title }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 /* 全体設定 */
@@ -56,7 +56,6 @@ img { max-width: 100%; height: auto; }
   100% { color: #5b695c; }
 }
 
-
 /* スマホ調整 */
 @media (max-width: 480px) {
   .main-table {
@@ -79,7 +78,6 @@ img { max-width: 100%; height: auto; }
   border: 5px solid #ffffff;  /* 枠線はここで設定 */
   border-collapse: collapse;
 }
-
 
 </style>
 
@@ -105,54 +103,22 @@ document.onmousemove = function(e){
 
 <body>
 <table class="main-table" cellspacing="0" cellpadding="5">
-  <tr><td>
- <!-- タイトル -->
-    <div class="wordart">プロフィール</div>
-    <img src="1015.jpg" width="200"><br>
+<tr><td>
 
-    <hr size="5" color="#5b695c" noshade>
+  <!-- タイトル -->
+  <div class="wordart">{{ page.title }}</div>
 
-    <!-- プロフィール本文 -->
-    <div style="text-align:left; line-height:1.8; font-size:14px; padding:10px;">
-      ●名前：42uk1アズキ<br>
-      「azuki」のLEET表記🫘<br><br>
-      ⋆︎1997年生まれ <br>
-      ⋆︎地方在住の社会人6年目<br>
-      ⋆︎仕事は事務系。4社目。<br><br>
-      ⋆︎ 1st イエベ秋 / 2nd イエベ春<br>
-⋆︎ 顔タイプエレガント<br>
-⋆︎骨格ストレート（自己診断）<br>
-⋆︎ENTJ-A <br>
-⋆︎ADHD傾向あり（未診断）<br><br>
-⋆︎ロジカルに話したい/内省的・納得いくまで考えたい<br>
-⋆︎だいたい向上心しかありません<br><br>
-本当はキラキラバリバリOLで働きたかったけど、心がついていけなくなった経験があり、今は無理せず働くにシフト。<br>
-東京で就職すればよかったコンプレックスと、自分はそちらで暮らすのがいいのだろうなという気持ちがある。<br>
-一方で自分で切り拓いてきた今の生活を愛してもいる。<br><br>><br>
+  <!-- Markdown の本文をここに読み込む -->
+  <div style="text-align:left; line-height:1.8; font-size:14px; padding:10px;">
+    {{ content }}
+  </div>
 
+  <hr size="5" color="#5b695c" noshade>
 
-●エンタメ<br>
-⋆︎月：ニューヨークのニューラジオ、一人賛否、BSノブロック<br>
-⋆︎木：佐久間宣行のオールナイトニッポン0<br>
-⋆︎土：霜降り明星のオールナイトニッポン<br><br>
-⋆︎Youtube：田辺さん、永野、さや香・新山、雷獣、たむらかえ、カップル杉下<br>
-⋆︎その他：奇奇怪怪、視点倉庫、こんな本どうですか？、ポインティ<br><br><br>
+  <!-- 戻るリンク -->
+  <a href="index.html">← トップに戻る</a>
 
-      ●私の人格形成に関わっているもの<br>
-⋆︎課題と部活だけの修行僧な女子高3年間<br>
-⋆︎ベンチャーみたいに働きまくったサークル（大4）<br>
-⋆︎AAA/Nissy<br>
-⋆︎宇宙兄弟/ハイキュー!!/BANANA FISH<br><br><br>
-      <a href="https://note.com/42uk1/n/na5c318ff00a2" target="_blank">詳しくはこちら → ★</a><br>
-      noteへ飛びます<br><br><br>
-  
-    </div>
-
-    <hr size="5" color="#5b695c" noshade>
-
-    <!-- 戻るリンク -->
-    <a href="index.html">← トップに戻る</a>
-  </td></tr>
+</td></tr>
 </table>
 </body>
 </html>
