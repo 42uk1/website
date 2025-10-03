@@ -14,35 +14,34 @@ body {
   font-family: "YuMincho", "游明朝", "MS Mincho", serif;
   margin:0;
   padding:0;
-  text-align: center;
 }
 
 .container {
   width: 90%;
   max-width: 700px;
   margin: 20px auto;
-  padding: 15px;
+  padding: 20px;
   background: #ffffff;
-  border: 5px solid #ffffff;
   border-radius: 8px;
 }
 
 .archive-title {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .archive-description {
   font-size: 14px;
   color: #444;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 details {
   border-bottom: 1px solid #d9e0be;
   padding: 12px 0;
-  text-align: left;
 }
 
 summary {
@@ -51,17 +50,33 @@ summary {
   cursor: pointer;
   color: #5b695c;
   list-style: none;
-  /* 折りたたみマーカーの色 */
 }
+
 summary::-webkit-details-marker {
   color: #d95b5b; /* 三角の色 */
 }
 
 details p {
-  margin: 8px 0 0 0;
-  font-size: 14px;
+  margin: 10px 0 0 0;
+  font-size: 15px;
   color: #444;
-  line-height: 1.6;
+  line-height: 1.7;
+}
+
+a {
+  color: #5b695c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  height: 3px;
+  background-color: #5b695c;
+  margin: 20px 0;
 }
 </style>
 </head>
@@ -69,18 +84,20 @@ details p {
 <body>
 <div class="container">
   <div class="archive-title">保管庫1</div>
-  <div class="archive-description">エンタメの感想など、noteとは別に残したいもの</br>タイトルを押すと詳細が出ます</div>
-  <hr size="3" color="#5b695c" noshade>
+  <div class="archive-description">
+    エンタメの感想など、noteとは別に残したいもの<br>
+    タイトルを押すと詳細が出ます
+  </div>
 
-<!-- 折りたたみ記事一覧 -->
-{% for post in site.categories.note %}
-<details>
-  <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
-  {{ post.content }}
-</details>
-{% endfor %}
+  <!-- 折りたたみ記事一覧 -->
+  {% for post in site.categories.note %}
+  <details>
+    <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
+    {{ post.content }}
+  </details>
+  {% endfor %}
 
-  <hr size="3" color="#5b695c" noshade>
+  <hr>
   <div style="text-align:center;">
     <a href="index.html">← トップに戻る</a>
   </div>
