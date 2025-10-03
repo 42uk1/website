@@ -54,6 +54,19 @@ summary {
   list-style: none;
 }
 
+
+summary {
+  padding: 4px 6px; /* 最初から指定 */
+}
+
+summary:hover {
+  background-color: rgba(195, 239, 211, 0.6); /* #c3efd3 半透明 */
+  color: #3d5640;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 4px;
+}
+
+
 summary::-webkit-details-marker {
   color: #d95b5b;
 }
