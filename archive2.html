@@ -56,11 +56,22 @@ summary::-webkit-details-marker {
   color: #d95b5b; /* 三角の色 */
 }
 
+/* ここから本文スタイル */
 details p {
   margin: 10px 0 0 0;
   font-size: 15px;
   color: #444;
   line-height: 1.7;
+
+  max-width: 26em;      /* 1行約34文字 */
+  margin-left: auto;
+  margin-right: auto;   /* 中央寄せ */
+  word-wrap: break-word;
+}
+@media (max-width: 480px) {
+  details p {
+    max-width: 90%;    /* モバイルは画面幅に合わせる */
+  }
 }
 
 a {
