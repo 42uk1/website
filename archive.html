@@ -71,7 +71,16 @@ summary {
   color: #5b695c;
   list-style: none;
 }
+  
+summary:hover {
+  background-color: rgba(47, 139, 87, 0.2); /* 半透明の緑 */
+  color: #2f8b57;                           /* 深めの緑文字 */
+  transition: background 0.3s, color 0.3s;
+  border-radius: 4px;
+  padding: 4px 6px;
+}
 
+  
 summary::-webkit-details-marker {
   color: #d95b5b;
 }
