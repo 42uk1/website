@@ -51,7 +51,6 @@ summary {
   cursor: pointer;
   color: #5b695c;
   list-style: none;
-  /* 折りたたみマーカーの色 */
 }
 summary::-webkit-details-marker {
   color: #d95b5b; /* 三角の色 */
@@ -72,8 +71,8 @@ details p {
   <div class="archive-description">タイトルを押すと詳細が出ます</div>
   <hr size="3" color="#5b695c" noshade>
 
-  <!-- 折りたたみ記事一覧 -->
-  {% for post in site.posts %}
+  <!-- 雑記カテゴリの記事だけ表示 -->
+  {% for post in site.categories.zatsuki %}
   <details>
     <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
     {{ post.content }}
