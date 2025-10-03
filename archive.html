@@ -84,15 +84,24 @@ details p {
   text-align: left;
   word-wrap: break-word;
 }
-
-a {
-  color: #5b695c;
-  text-decoration: none;
+  
+/* リンク色 */
+a:link { 
+  color:#2f8b57; /* 鮮やかに映える緑 */
+  text-decoration:none; 
+}
+a:visited { 
+  color:#1b4d3e; /* 少し落ち着いた深緑 */
+}
+a:hover { 
+  color:#ffffff;        /* 白字に */
+  background:#2f8b57;   /* hoverで緑の反転 */
+  text-decoration:underline;
+}
+a:active { 
+  color:#ff6600; /* クリック時は強いアクセント */
 }
 
-a:hover {
-  text-decoration: underline;
-}
 
 hr {
   border: none;
