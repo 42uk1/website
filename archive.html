@@ -1,6 +1,6 @@
 ---
 layout: none
-title: "アーカイブ"
+title: "保管庫1"
 ---
 
 <html>
@@ -9,9 +9,9 @@ title: "アーカイブ"
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
-  background-color: #caf5d9; /* 背景色を指定 */
+  background-color: #caf5d9;
   color: #5b695c;
-  font-family: "YuMincho", "游明朝", "MS Mincho", serif; /* 明朝体に固定 */
+  font-family: "YuMincho", "游明朝", "MS Mincho", serif;
   margin:0;
   padding:0;
   text-align: center;
@@ -30,7 +30,13 @@ body {
 .archive-title {
   font-size: 22px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.archive-description {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 15px;
 }
 
 details {
@@ -44,15 +50,11 @@ summary {
   font-weight: bold;
   cursor: pointer;
   color: #5b695c;
+  list-style: none;
+  /* 折りたたみマーカーの色 */
 }
-
-summary a {
-  color: #5b695c;
-  text-decoration: none;
-}
-
-summary a:hover {
-  text-decoration: underline;
+summary::-webkit-details-marker {
+  color: #d95b5b; /* 三角の色 */
 }
 
 details p {
@@ -67,15 +69,13 @@ details p {
 <body>
 <div class="container">
   <div class="archive-title">アーカイブ</div>
+  <div class="archive-description">▶を押すと詳細が出ます</div>
   <hr size="3" color="#5b695c" noshade>
 
   <!-- 折りたたみ記事一覧 -->
   {% for post in site.posts %}
   <details>
-    <summary>{{ post.date | date: "%Y-%m-%d" }}　
-      <a href="{{ post.url }}">{{ post.title }}</a>
-    </summary>
-    <!-- 本文をそのまま表示 -->
+    <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
     {{ post.content }}
   </details>
   {% endfor %}
