@@ -1,17 +1,17 @@
 ---
 layout: none
-title: "保管庫2"
+title: "保管庫1"
 ---
 
 <html>
 <head>
-<title>保管庫2</title>
+<title>保管庫1</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body {
   background-color: #caf5d9;
   color: #5b695c;
-  font-family: "Yu Gothic", "Meiryo", sans-serif;
+  font-family: "Meiryo", "Yu Gothic", sans-serif;
   margin:0;
   padding:0;
 }
@@ -42,8 +42,8 @@ details {
   border-bottom: 1px solid #d9e0be;
   padding: 12px 0;
   text-align: left;
-  max-width: 26em; /* 1行約34文字 */
-  margin: 0 auto 12px auto; /* 中央寄せ */
+  max-width: 34em;  /* 1行約34文字目安 */
+  margin: 0 auto;
 }
 
 summary {
@@ -55,17 +55,16 @@ summary {
 }
 
 summary::-webkit-details-marker {
-  color: #d95b5b; /* 三角の色 */
+  color: #d95b5b;
 }
 
-details div {
+details p {
   margin: 10px 0 0 0;
   font-size: 15px;
   color: #444;
   line-height: 1.7;
-  max-width: 26em; /* 1行約34文字 */
-  margin-left: auto;
-  margin-right: auto;
+  text-align: left;
+  word-wrap: break-word;
 }
 
 a {
@@ -84,14 +83,9 @@ hr {
   margin: 20px 0;
 }
 
-/* モバイル対応 */
 @media (max-width: 480px) {
-  .container {
-    width: 95%;
-    padding: 15px;
-  }
-  details div {
-    max-width: 90%;
+  details {
+    max-width: 90%; /* モバイルは幅を広げて読みやすく */
   }
 }
 </style>
@@ -99,19 +93,17 @@ hr {
 
 <body>
 <div class="container">
-  <div class="archive-title">保管庫2</div>
+  <div class="archive-title">保管庫1</div>
   <div class="archive-description">
-    note投稿タイミングを失ったものなど<br>
+    エンタメの感想など、noteとは別に残したいもの<br>
     タイトルを押すと詳細が出ます
   </div>
 
   <!-- 折りたたみ記事一覧 -->
-  {% for post in site.categories.zatsuki %}
+  {% for post in site.categories.note %}
   <details>
     <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
-    <div>
-      {{ post.content }}
-    </div>
+    <p>{{ post.content }}</p>
   </details>
   {% endfor %}
 
