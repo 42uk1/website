@@ -72,13 +72,13 @@ details p {
   <div class="archive-description">タイトルを押すと詳細が出ます</div>
   <hr size="3" color="#5b695c" noshade>
 
-  <!-- 折りたたみ記事一覧 -->
-  {% for post in site.posts %}
-  <details>
-    <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
-    {{ post.content }}
-  </details>
-  {% endfor %}
+<!-- 折りたたみ記事一覧 -->
+{% for post in site.categories.note %}
+<details>
+  <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
+  {{ post.content }}
+</details>
+{% endfor %}
 
   <hr size="3" color="#5b695c" noshade>
   <div style="text-align:center;">
