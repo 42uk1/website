@@ -82,26 +82,30 @@ details p, .post-content {
   white-space: pre-wrap; /* 改行・空白をそのまま表示 */
 }
 
+/* details全体の余白確保 */
 details {
   position: relative;
-  padding-left: 14px;
+  padding-left: 8px; /* 本文左にバー用スペース */
 }
 
-details::before {
+/* 閉じているときは薄いバー */
+details p::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background-color: transparent;
+  width: 3px;
+  background-color: #d9d9d9; /* 薄いグレー */
   border-radius: 2px;
 }
 
-details[open]::before {
-  background-color: #2f8b57;
+/* 開いているときはバーを濃くして視認性UP */
+details[open] p::before {
+  background-color: #2f8b57; /* 緑で開いている箇所を強調 */
 }
 
+/* summaryにはバーを表示しない */
 summary::before {
   content: "▶";
   display: inline-block;
@@ -113,6 +117,7 @@ summary::before {
 details[open] summary::before {
   content: "▼";
 }
+
 
   
 /* リンク色 */
