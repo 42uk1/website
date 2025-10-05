@@ -20,55 +20,57 @@ body {
 .container {
   width: 90%;
   max-width: 700px;
-  margin: 20px auto;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
+  margin: 24px auto;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 10px;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 /* タイトル・説明 */
 .archive-title {
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
   margin-bottom: 8px;
+  letter-spacing: 0.02em;
 }
 
 .archive-description {
-  font-size: 14px;
-  color: #444;
-  margin-bottom: 20px;
-  line-height: 1.6;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 24px;
+  line-height: 1.8;
 }
 
 /* 折りたたみ項目 */
 details {
   border-bottom: 1px solid #d9e0be;
-  padding: 12px 0;
+  padding: 14px 0;
   text-align: left;
-  max-width: 34em; /* 約34文字幅 */
-  margin: 0 auto 16px;
+  max-width: 34em;
+  margin: 0 auto 20px;
   transition: background-color 0.3s;
 }
 
 details[open] {
-  background-color: rgba(195, 239, 211, 0.2); /* 開いた時にほんのり緑 */
+  background-color: rgba(195, 239, 211, 0.2);
   border-radius: 6px;
 }
 
 summary {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: bold;
   cursor: pointer;
   color: #5b695c;
-  padding: 4px 6px;
+  padding: 6px 8px;
   list-style: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
 summary:hover {
-  background-color: rgba(195, 239, 211, 0.6); /* hover時の淡い緑 */
-  color: #3d5640; /* トーンを崩さず深めに */
+  background-color: rgba(195, 239, 211, 0.6);
+  color: #3d5640;
   border-radius: 4px;
 }
 
@@ -78,11 +80,12 @@ summary::-webkit-details-marker {
 
 /* 折りたたみ本文 */
 details p {
-  margin: 10px 0 0 0;
-  font-size: 15px;
-  color: #444;
-  line-height: 1.7;
+  margin: 12px 0 0 0;
+  font-size: 16.5px;
+  color: #555;
+  line-height: 1.9;
   word-wrap: break-word;
+  letter-spacing: 0.02em;
 }
 
 /* リンク */
@@ -93,8 +96,8 @@ a {
 }
 
 a:hover {
-  color: #1b4d3e;
-  background: rgba(195, 239, 211, 0.4);
+  color: #ffffff;
+  background: #2f8b57;
   border-radius: 3px;
   text-decoration: underline;
 }
@@ -108,16 +111,20 @@ hr {
   border: none;
   height: 3px;
   background-color: #5b695c;
-  margin: 24px 0;
+  margin: 28px 0;
 }
 
 /* モバイル最適化 */
 @media (max-width: 480px) {
   .container {
-    padding: 16px;
+    padding: 20px;
   }
   summary {
-    font-size: 15px;
+    font-size: 16px;
+  }
+  details p {
+    font-size: 16px;
+    line-height: 1.85;
   }
   details {
     max-width: 90%;
