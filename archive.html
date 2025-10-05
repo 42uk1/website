@@ -1,67 +1,49 @@
----
-layout: none
-title: "保管庫1"
----
-
-<html>
-<head>
-<title>保管庫1</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
 body {
   background-color: #caf5d9;
   color: #5b695c;
   font-family: "Meiryo", "Yu Gothic", sans-serif;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 
-/* リンク色 */
-a:link { 
-  color:#2f8b57; /* 鮮やかに映える緑 */
-  text-decoration:none; 
-}
-a:visited { 
-  color:#1b4d3e; /* 少し落ち着いた深緑 */
-}
-a:hover { 
-  color:#ffffff;        /* 白字に */
-  background:#2f8b57;   /* hoverで緑の反転 */
-  text-decoration:underline;
-}
-a:active { 
-  color:#ff6600; /* クリック時は強いアクセント */
-}
-
-
+/* コンテナ */
 .container {
   width: 90%;
   max-width: 700px;
   margin: 20px auto;
   padding: 20px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95); /* わずかに透過 */
   border-radius: 8px;
   text-align: center;
 }
 
+/* タイトル・説明 */
 .archive-title {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .archive-description {
   font-size: 14px;
   color: #444;
   margin-bottom: 20px;
+  line-height: 1.6;
 }
 
+/* 折りたたみ項目 */
 details {
   border-bottom: 1px solid #d9e0be;
   padding: 12px 0;
   text-align: left;
-  max-width: 34em;  /* 1行約34文字目安 */
-  margin: 0 auto;
+  max-width: 34em;
+  margin: 0 auto 16px; /* 下に余白を追加 */
+  transition: background-color 0.3s;
+}
+
+details[open] {
+  background-color: rgba(195, 239, 211, 0.2); /* 開いた時にほんのり緑 */
+  border-radius: 6px;
 }
 
 summary {
@@ -69,90 +51,61 @@ summary {
   font-weight: bold;
   cursor: pointer;
   color: #5b695c;
+  padding: 4px 6px;
   list-style: none;
-}
-  
-summary {
-  padding: 4px 6px; /* 最初から指定 */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 summary:hover {
-  background-color: rgba(195, 239, 211, 0.6); /* #c3efd3 半透明 */
-  color: #3d5640;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: rgba(195, 239, 211, 0.6); /* 半透明の緑 */
+  color: #3d5640; /* トーンを変えすぎず深めに */
   border-radius: 4px;
 }
 
-
-
-
-  
 summary::-webkit-details-marker {
   color: #d95b5b;
 }
 
+/* 折りたたみ本文 */
 details p {
   margin: 10px 0 0 0;
   font-size: 15px;
   color: #444;
   line-height: 1.7;
-  text-align: left;
   word-wrap: break-word;
 }
-  
-/* リンク色 */
-a:link { 
-  color:#2f8b57; /* 鮮やかに映える緑 */
-  text-decoration:none; 
-}
-a:visited { 
-  color:#1b4d3e; /* 少し落ち着いた深緑 */
-}
-a:hover { 
-  color:#ffffff;        /* 白字に */
-  background:#2f8b57;   /* hoverで緑の反転 */
-  text-decoration:underline;
-}
-a:active { 
-  color:#ff6600; /* クリック時は強いアクセント */
+
+/* リンク */
+a {
+  color: #2f8b57;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
+a:hover {
+  color: #1b4d3e;
+  background: rgba(195, 239, 211, 0.4);
+  border-radius: 3px;
+  text-decoration: underline;
+}
 
+/* 区切り線 */
 hr {
   border: none;
   height: 3px;
   background-color: #5b695c;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
+/* モバイル */
 @media (max-width: 480px) {
+  .container {
+    padding: 16px;
+  }
+  summary {
+    font-size: 15px;
+  }
   details {
-    max-width: 90%; /* モバイルは幅を広げて読みやすく */
+    max-width: 90%;
   }
 }
-</style>
-</head>
-
-<body>
-<div class="container">
-  <div class="archive-title">保管庫1</div>
-  <div class="archive-description">
-    エンタメの感想など、noteとは別に残したいもの<br>
-    タイトルを押すと詳細が出ます
-  </div>
-
-  <!-- 折りたたみ記事一覧 -->
-  {% for post in site.categories.note %}
-  <details>
-    <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
-    <p>{{ post.content }}</p>
-  </details>
-  {% endfor %}
-
-  <hr>
-  <div style="text-align:center;">
-    <a href="index.html">← トップに戻る</a>
-  </div>
-</div>
-</body>
-</html>
