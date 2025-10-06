@@ -184,5 +184,22 @@ hr {
     <a href="index.html">← トップに戻る</a>
   </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const hash = decodeURIComponent(window.location.hash.substring(1)); // #を除去
+  if (!hash) return;
+
+  // 全ての <summary> をチェック
+  document.querySelectorAll("details").forEach(d => {
+    const summaryText = d.querySelector("summary")?.innerText || "";
+    if (summaryText.includes(hash)) {
+      d.setAttribute("open", "open"); // 開く
+      d.scrollIntoView({ behavior: "smooth", block: "start" }); // 該当箇所までスクロール
+    }
+  });
+});
+</script>
+
 </body>
 </html>
