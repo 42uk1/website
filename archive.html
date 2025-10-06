@@ -187,19 +187,20 @@ hr {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const hash = decodeURIComponent(window.location.hash.substring(1)); // #を除去
-  if (!hash) return;
+  const params = new URLSearchParams(window.location.search);
+  const id = decodeURIComponent(params.get("id") || "");
+  if (!id) return;
 
-  // 全ての <summary> をチェック
   document.querySelectorAll("details").forEach(d => {
     const summaryText = d.querySelector("summary")?.innerText || "";
-    if (summaryText.includes(hash)) {
-      d.setAttribute("open", "open"); // 開く
-      d.scrollIntoView({ behavior: "smooth", block: "start" }); // 該当箇所までスクロール
+    if (summaryText.includes(id)) {
+      d.setAttribute("open", "open");
+      d.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 });
 </script>
+
 
 </body>
 </html>
