@@ -1,59 +1,78 @@
 <html>
 <head>
-<title>アズキの部屋</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アズキの部屋</title>
+
 <style>
 body {
-  background-color: #caf5d9;
-  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", serif;
-  font-size: 14px;
-  margin: 40px auto;
-  max-width: 480px;
-  line-height: 2;
-  color: #5b695c;
+  margin: 0;
+  font-family: "游明朝", "Yu Mincho", serif;
+  background: #ffffff;
+  color: #2f8b57;
 }
 
-/* タイトル */
-h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 20px;
+/* レイアウト */
+.container {
+  display: flex;
+  height: 100vh;
 }
 
-/* リンク */
-a:link { color:#2f8b57; text-decoration:none; }
-a:visited { color:#1b4d3e; }
-a:hover { 
-  color:#ffffff;
-  background:#2f8b57;
-  text-decoration:underline;
+/* 左メニュー */
+.menu {
+  width: 180px;
+  padding: 20px;
+  border-right: 1px solid #ddd;
 }
-a:active { color:#ff6600; }
 
+.menu a {
+  display: block;
+  margin-bottom: 10px;
+  color: #2f8b57;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+/* 右表示 */
+.content {
+  flex: 1;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 </style>
 </head>
 
 <body>
 
-<h1>アズキの部屋</h1>
+<div class="container">
 
-<div>
-<a href="/profile/">プロフィール（工事中）</a><br>
-<a href="https://note.com/42uk1" target="_blank">note</a><br>
-<a href="archive.html">保管庫1</a><br>
-<a href="archive2.html">保管庫2</a><br>
-<a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br>
-<a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br>
-<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ（停止中）</a><br>
-<a href="photo.html">写真置き場（工事中）</a><br>
-</div>
+  <!-- 左メニュー -->
+  <div class="menu">
+    <div>アズキの部屋</div><br>
 
-<br>
+    <a href="profile.html" target="main">プロフィール</a>
+    <a href="archive.html" target="main">保管庫1</a>
+    <a href="archive2.html" target="main">保管庫2</a>
+    <a href="photo.html" target="main">写真</a>
 
-<div>
-<a href="#">BBS（準備中）</a><br>
-<a href="#">キリ番報告フォーム（準備中）</a><br>
-<a href="#">リンク集（準備中）</a>
+    <br>
+
+    <a href="https://note.com/42uk1" target="_blank">note</a>
+    <a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a>
+    <a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a>
+  </div>
+
+  <!-- 右表示エリア -->
+  <div class="content">
+    <iframe name="main" src="profile.html"></iframe>
+  </div>
+
 </div>
 
 </body>
