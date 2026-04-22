@@ -21,9 +21,9 @@ title: "保管庫1"
 body {
   background: #ffffff;
   color: #2f8b57;
-  font-family: "游明朝", "Yu Mincho", serif;
-  margin: 30px auto;
-  max-width: 560px;
+  font-family: "Meiryo", "Yu Gothic", sans-serif;
+  margin: 30px 20px; /* 左寄せ */
+  max-width: 600px;
   line-height: 1.7;
   font-size: 14px;
 }
@@ -47,6 +47,12 @@ details {
 
 summary {
   cursor: pointer;
+  text-decoration: underline;
+}
+
+summary:hover {
+  background:#2f8b57;
+  color:#ffffff;
 }
 
 details p {
@@ -55,11 +61,21 @@ details p {
   white-space: pre-wrap;
 }
 
-/* リンク */
-a:link { color:#2f8b57; text-decoration:none; }
-a:visited { color:#1b4d3e; }
-a:hover { text-decoration:underline; }
-a:active { color:#ff6600; }
+/* リンク（見えるようにする） */
+a:link { 
+  color:#2f8b57; 
+  text-decoration: underline;
+}
+a:visited { 
+  color:#1b4d3e; 
+}
+a:hover { 
+  color:#ffffff;
+  background:#2f8b57;
+}
+a:active { 
+  color:#ff6600; 
+}
 
 </style>
 </head>
