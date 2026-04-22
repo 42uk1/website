@@ -8,154 +8,89 @@ title: "保管庫2"
 <meta charset="UTF-8">
 <title>{{ page.title }}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body {
-  background-color: #caf5d9;
-  color: #5b695c;
-  font-family: "Meiryo", "Yu Gothic", sans-serif;
-  margin:0;
-  padding:0;
-}
-
-/* メインコンテナ */
-.container {
-  width: 90%;
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 24px 20px;
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: center;
+  color: #2f8b57;
+  font-family: "Meiryo", "Yu Gothic", sans-serif;
+  margin: 30px 20px; /* 左寄せ */
+  max-width: 600px;
+  line-height: 1.7;
+  font-size: 14px;
 }
 
 /* タイトル */
-.archive-title {
-  font-size: 28px;
-  font-weight: bold;
+h1 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+
+/* 説明 */
+.desc {
+  margin-bottom: 16px;
+}
+
+/* 記事 */
+details {
   margin-bottom: 10px;
 }
 
-.archive-description {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.8;
-  margin-bottom: 26px;
-}
-
-/* 折りたたみ記事 */
-details {
-  border-bottom: 1px solid #d9e0be;
-  padding: 14px 0;
-  max-width: 34em;
-  margin: 0 auto;
-  text-align: left;
-  position: relative;
-  padding-left: 1em;
-  margin-bottom: 12px;
-}
-
-/* summary部分 */
 summary {
-  font-size: 17px;
-  font-weight: 600;
-  color: #4a574a;
   cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 4px;
-  list-style: none;
+  text-decoration: underline;
 }
 
 summary:hover {
-  background-color: rgba(195, 239, 211, 0.6);
-  color: #3d5640;
-  transition: background-color 0.3s, color 0.3s;
+  background:#2f8b57;
+  color:#ffffff;
 }
 
-/* summaryのアイコン */
-summary::before {
-  content: "▶";
-  display: inline-block;
-  width: 1em;
-  margin-right: 6px;
-}
-details[open] summary::before {
-  content: "▼";
-}
-
-/* バー（開いたときのみ、本文側に1本） */
-details::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 2em; /* summary下から */
-  bottom: 0;
-  width: 4px;
-  background-color: #d9d9d9;
-  border-radius: 2px;
-  display: none;
-}
-details[open]::after {
-  display: block;
-}
-
-/* 本文 */
 details p {
-  margin: 8px 0;
-  font-size: 17px;
-  color: #3e3e3e;
-  line-height: 1.9;
-  word-wrap: break-word;
-  padding-left: 12px; /* バーとの距離 */
-  white-space: pre-wrap; /* 改行保持 */
+  margin: 6px 0 10px 0;
+  color: #333;
+  white-space: pre-wrap;
 }
 
-/* リンク */
-a:link { color:#2f8b57; text-decoration:none; }
-a:visited { color:#1b4d3e; }
-a:hover { color:#ffffff; background:#2f8b57; text-decoration:underline; }
-a:active { color:#ff6600; }
-
-/* 区切り線 */
-hr {
-  border: none;
-  height: 3px;
-  background-color: #5b695c;
-  margin: 28px 0;
+/* リンク（見えるようにする） */
+a:link { 
+  color:#2f8b57; 
+  text-decoration: underline;
+}
+a:visited { 
+  color:#1b4d3e; 
+}
+a:hover { 
+  color:#ffffff;
+  background:#2f8b57;
+}
+a:active { 
+  color:#ff6600; 
 }
 
-/* モバイル対応 */
-@media (max-width: 480px) {
-  .container {
-    padding: 20px 14px;
-  }
-  details {
-    max-width: 90%;
-  }
-}
 </style>
 </head>
 
 <body>
-<div class="container">
-  <div class="archive-title">{{ page.title }}</div>
-  <div class="archive-description">
-    note投稿タイミングを失ったものなど<br>
-    タイトルを押すと詳細が開きます
-  </div>
 
-  <!-- 雑記カテゴリの記事だけ表示 -->
-  {% for post in site.categories.zatsuki %}
-  <details>
-    <summary>{{ post.date | date: "%Y-%m-%d" }}　{{ post.title }}</summary>
-    <p>{{ post.content }}</p>
-  </details>
-  {% endfor %}
+<h1>{{ page.title }}</h1>
 
-  <hr>
-  <div style="text-align:center;">
-    <a href="index.html">← トップに戻る</a>
-  </div>
+<div class="desc">
+note投稿タイミングを失ったものなど<br>
+タイトルを押すと詳細が開きます
 </div>
+
+{% for post in site.categories.zatsuki %}
+<details>
+  <summary>{{ post.date | date: "%Y-%m-%d" }} {{ post.title }}</summary>
+  <p>{{ post.content }}</p>
+</details>
+{% endfor %}
+
+<br>
+
+
+
 </body>
 </html>
