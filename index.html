@@ -3,162 +3,58 @@
 <title>アズキの部屋</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/* 全体設定 */
 body {
-  background-color: #caf5d9; /* 背景色を指定 */
-  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "MS 明朝", serif;
+  background-color: #caf5d9;
+  font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", serif;
   font-size: 14px;
-  margin:0;
-  padding:0;
-  text-align: center;
+  margin: 40px auto;
+  max-width: 480px;
+  line-height: 2;
+  color: #5b695c;
 }
 
 /* タイトル */
-.wordart {
-  font-size: 42px;
+h1 {
+  font-size: 28px;
   font-weight: bold;
-  color: #555555; /* グレー */
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(85,85,85,0.4);
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-/* リンク色 */
-/* リンク色 */
-a:link { 
-  color:#2f8b57; /* 鮮やかに映える緑 */
-  text-decoration:none; 
-}
-a:visited { 
-  color:#1b4d3e; /* 少し落ち着いた深緑 */
-}
+/* リンク */
+a:link { color:#2f8b57; text-decoration:none; }
+a:visited { color:#1b4d3e; }
 a:hover { 
-  color:#ffffff;        /* 白字に */
-  background:#2f8b57;   /* hoverで緑の反転 */
+  color:#ffffff;
+  background:#2f8b57;
   text-decoration:underline;
 }
-a:active { 
-  color:#ff6600; /* クリック時は強いアクセント */
-}
-
-
-/* 点滅用（必要なら） */
-.blink { animation: blink 1s step-start infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
-/* レスポンシブ画像 */
-img { max-width: 100%; height: auto; }
-
-/* ウェルカム文字アニメーション */
-.welcome {
-  font-size: 18px;
-  font-weight: bold;
-  color: #5b695c; /* 基本色 */
-  text-shadow: none; /* ぼやけ不要 */
-  animation: flashy 1s infinite alternate;
-  display: inline-block;
-}
-
-@keyframes flashy {
-  0%   { color: #5b695c; }
-  20%  { color: #ff3366; }
-  40%  { color: #ff9900; }
-  60%  { color: #33ccff; }
-  80%  { color: #33ff99; }
-  100% { color: #5b695c; }
-}
-
-
-/* スマホ調整 */
-@media (max-width: 480px) {
-  .main-table {
-    width: 80%;       /* 横幅を縮小 */
-    max-width: 260px; /* スマホ時の最大幅 */
-    border-width: 3px; /* 枠を細くして目立たなくする */
-  }
-}
-
-/* テーブル内の中央寄せ */
-.main-table td {
-  text-align: center;
-}
-
-.main-table {
-  width: 90%;
-  max-width: 400px;
-  margin: 20px auto;
-  background: #ffffff;
-  border: 5px solid #ffffff;  /* 枠線はここで設定 */
-  border-collapse: collapse;
-}
-
+a:active { color:#ff6600; }
 
 </style>
-
-<script>
-// ポップアップ
-function noExist(){ alert("存在しないよ！"); }
-
-// レインボーカラーキラキラカーソル
-document.onmousemove = function(e){
-  var star = document.createElement("span");
-  star.innerHTML="✧";
-  star.style.position="absolute";
-  star.style.left = e.pageX + "px";
-  star.style.top = e.pageY + "px";
-  star.style.color = "hsl(" + Math.random()*360 + ",100%,60%)";
-  star.style.fontSize = "12px";
-  star.style.pointerEvents = "none";
-  document.body.appendChild(star);
-  setTimeout(function(){star.remove()},400);
-};
-</script>
 </head>
 
 <body>
-<table class="main-table" cellspacing="0" cellpadding="5">
-  <tr><td>
-    <!-- タイトル -->
-    <div class="wordart">アズキの部屋</div>
-    <img src="1015.jpg" width="200"><br>
 
-    <!-- ご訪問ありがとうございます -->
-    <div class="welcome">ご訪問ありがとうございます</div>
+<h1>アズキの部屋</h1>
 
-    <!-- アクセスカウンター -->
-    <div style="font-size:16px; font-weight:bold; color:#5b695c; margin-top:10px;">
-      あなたは <span style="color:#67b5b7; font-size:18px;">200123</span> 人目の訪問者です！
-    </div>
+<div>
+<a href="/profile/">プロフィール（工事中）</a><br>
+<a href="https://note.com/42uk1" target="_blank">note</a><br>
+<a href="archive.html">保管庫1</a><br>
+<a href="archive2.html">保管庫2</a><br>
+<a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br>
+<a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br>
+<a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ（停止中）</a><br>
+<a href="photo.html">写真置き場（工事中）</a><br>
+</div>
 
-    <hr size="5" color="#5b695c" noshade>
+<br>
 
-    <!-- リンク一覧 -->
-    <div style="text-align:center; line-height:2;">
-     <a href="/profile/">プロフィール(工事中)</a><br><br>
-      <a href="https://note.com/42uk1" target="_blank">note</a><br><br>
-       <a href="archive.html">保管庫1</a><br><br>
-      <a href="archive2.html">保管庫2</a><br><br>
-      <a href="https://booklog.jp/users/l3gumee" target="_blank">ブクログ</a><br><br>
-      <a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a><br><br>
-      <a href="https://marshmallow-qa.com/ur2067crzxd24h1?t=9o5gB6&utm_medium=url_text&utm_source=promotion" target="_blank">マシュマロ（停止中）</a><br><br>
-      <a href="photo.html">写真置き場(工事中)</a><br><br>
-    </div>
+<div>
+<a href="#">BBS（準備中）</a><br>
+<a href="#">キリ番報告フォーム（準備中）</a><br>
+<a href="#">リンク集（準備中）</a>
+</div>
 
-    <hr size="5" color="#5b695c" noshade>
-
-    <!-- 写真表示 -->
-    <img src="0355.png" width="200"><br>
-
-    <hr size="5" color="#5b695c" noshade>
-
-    <!-- 下部リンク -->
-    <div style="text-align:center; line-height:2;">
-      <a href="#" onclick="noExist()">BBS</a><br><br>
-      <a href="#" onclick="noExist()">キリ番報告フォーム</a><br><br>
-      <a href="#" onclick="noExist()">リンク集</a>
-    </div>
-  </td></tr>
-
-</table>
 </body>
 </html>
