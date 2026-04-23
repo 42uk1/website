@@ -23,23 +23,12 @@ body {
 
 <body>
 
-<h2>アズキの部屋</h2>
+<h2>こんにちは</h2>
 
-<p>左のメニューから選択してください。</p>
+<p>
+左のメニューから項目を選択してください<br>
+最終更新：{{ site.time | date: "%Y-%m-%d" }}
+</p>
 
-<div style="margin-top:20px; font-size:13px; color:#444;">
-  現在の状態：静かなサイトです
-</div>
-
-<div style="margin-top:10px; font-size:13px;">
-  訪問ログ：<span id="count">0</span>
-</div>
-
-<script>
-let count = localStorage.getItem("visit_count") || 0;
-count++;
-localStorage.setItem("visit_count", count);
-document.getElementById("count").textContent = count;
-</script>
 </body>
 </html>
