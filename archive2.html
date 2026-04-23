@@ -39,19 +39,21 @@ h1 {
 
 /* 記事 */
 details {
-  margin-bottom: 12px;
+  margin-bottom: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
-summary {
-  cursor: pointer;
-  font-weight: 600;
-  color: #222;
+/* 開いた時の余白 */
+details[open] summary {
+  margin-bottom: 10px;
 }
 
+/* 本文を1段下げる（重要） */
 details p {
-  margin: 8px 0;
-  color: #222;
-  white-space: pre-wrap;
+  margin-top: 6px;
+  padding-left: 16px;   /* ← marginではなくpadding */
+  border-left: 2px solid transparent; /* 見えないけど段差が出る */
 }
 
 /* リンク */
