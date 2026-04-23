@@ -43,16 +43,16 @@ details {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
 }
+
+/* 開いた時の余白 */
 details[open] summary {
   margin-bottom: 10px;
 }
-details[open] {
-  border-left: 2px solid #eee;
-  padding-left: 8px;
-}
+
+/* 本文を1段下げる（重要） */
 details p {
   margin-top: 6px;
-  padding-left: 4px;
+  margin-left: 12px;   /* ← これで階層を作る */
 }
 
 /* summary */
