@@ -11,70 +11,65 @@ title: "保管庫2"
 
 <style>
 body {
-  background: #ffffff;
-  color: #2f8b57;
+  margin: 0;
   font-family: "Meiryo", "Yu Gothic", sans-serif;
-  margin: 30px 20px; /* 左寄せ */
-  max-width: 600px;
-  line-height: 1.7;
-  font-size: 14px;
+  background: #fff;
+  color: #222;
+}
+
+/* 左寄せレイアウト */
+.container {
+  max-width: 720px;
+  margin: 40px 20px; /* 中央寄せ解除 */
+  padding: 0 20px;
 }
 
 /* タイトル */
-h1, h2, h3, h4, h5, h6 {
-  color: #333;
-}
-  font-size: 20px;
-  margin-bottom: 12px;
-  font-weight: normal;
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 /* 説明 */
 .desc {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  color: #444;
 }
 
 /* 記事 */
 details {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 summary {
   cursor: pointer;
-  text-decoration: underline;
-}
-
-summary:hover {
-  background:#2f8b57;
-  color:#ffffff;
+  font-weight: 600;
+  color: #222;
 }
 
 details p {
-  margin: 6px 0 10px 0;
-  color: #333;
+  margin: 8px 0;
+  color: #222;
   white-space: pre-wrap;
 }
 
-/* リンク（見えるようにする） */
-a:link { 
-  color:#2f8b57; 
+/* リンク */
+a {
+  color: #222;
   text-decoration: underline;
 }
-a:visited { 
-  color:#1b4d3e; 
-}
-a:hover { 
-  color:#ffffff;
-  background:#2f8b57;
-}
-a:active { 
-  color:#ff6600; 
+
+a:hover {
+  color: #000;
 }
 
 </style>
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>{{ page.title }}</h1>
 
@@ -90,9 +85,9 @@ note投稿タイミングを失ったものなど<br>
 </details>
 {% endfor %}
 
-<br>
 
-<a href="index.html">← トップに戻る</a>
+
+</div>
 
 </body>
 </html>
