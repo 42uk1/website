@@ -17,7 +17,7 @@ body {
   color: #222;
 }
 
-/* 中央寄せではなく余白ベース */
+/* レイアウト */
 .container {
   max-width: 720px;
   margin: 40px 20px;
@@ -40,25 +40,28 @@ h1 {
 /* 記事 */
 details {
   margin-bottom: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
 }
 
+/* summary */
+summary {
+  cursor: pointer;
+}
+
+/* タイトル */
 summary .title {
   font-weight: 500;
 }
 
+/* 日付 */
 summary .date {
   font-size: 12px;
   color: #777;
   margin-left: 8px;
 }
 
-/* 日付 */
-.date {
-  font-size: 12px;
-  color: #777;
-  margin-left: 8px;
-}
-
+/* 本文 */
 details p {
   margin: 8px 0;
   color: #222;
@@ -90,14 +93,13 @@ a:hover {
 
 {% for post in site.categories.note %}
 <details>
-<summary>
-  <span class="title">{{ post.title }}</span>
-  <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-</summary>
+  <summary>
+    <span class="title">{{ post.title }}</span>
+    <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  </summary>
   <p>{{ post.content }}</p>
 </details>
 {% endfor %}
-
 
 </div>
 
