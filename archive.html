@@ -7,74 +7,56 @@ title: "保管庫1"
 <head>
 <meta charset="UTF-8">
 <title>{{ page.title }}</title>
-
-<!-- OGP -->
-<meta property="og:title" content="保管庫1">
-<meta property="og:description" content="個別エンタメ感想・雑記の置き場所">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://42uk1.github.io/website/archive.html">
-<meta property="og:image" content="1015.jpg">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
-  background: #ffffff;
-  color: #2f8b57;
+  background: #fff;
+  color: #222;
   font-family: "Meiryo", "Yu Gothic", sans-serif;
-  margin: 30px 20px; /* 左寄せ */
-  max-width: 600px;
-  line-height: 1.7;
-  font-size: 14px;
+  margin: 40px auto;
+  max-width: 680px;
+  line-height: 1.8;
+  font-size: 15px;
 }
 
 /* タイトル */
 h1 {
   font-size: 20px;
-  margin-bottom: 12px;
-  font-weight: normal;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 /* 説明 */
 .desc {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  color: #444;
 }
 
 /* 記事 */
 details {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 summary {
   cursor: pointer;
-  text-decoration: underline;
-}
-
-summary:hover {
-  background:#2f8b57;
-  color:#ffffff;
+  font-weight: 600;
 }
 
 details p {
-  margin: 6px 0 10px 0;
-  color: #333;
+  margin: 8px 0;
+  color: #222;
   white-space: pre-wrap;
 }
 
-/* リンク（見えるようにする） */
-a:link { 
-  color:#2f8b57; 
+/* リンク */
+a {
+  color: #222;
   text-decoration: underline;
 }
-a:visited { 
-  color:#1b4d3e; 
-}
-a:hover { 
-  color:#ffffff;
-  background:#2f8b57;
-}
-a:active { 
-  color:#ff6600; 
+
+a:hover {
+  color: #000;
 }
 
 </style>
@@ -97,22 +79,7 @@ a:active {
 
 <br>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const params = new URLSearchParams(window.location.search);
-  const id = decodeURIComponent(params.get("id") || "");
-  if (!id) return;
-
-  document.querySelectorAll("details").forEach(d => {
-    const summaryText = d.querySelector("summary")?.innerText || "";
-    if (summaryText.includes(id)) {
-      d.setAttribute("open", "open");
-      d.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-});
-</script>
+<a href="index.html">← トップに戻る</a>
 
 </body>
 </html>
