@@ -1,14 +1,15 @@
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>アズキの部屋</title>
 
 <style>
 body {
   margin: 0;
-  font-family:  "Meiryo", "Yu Gothic", serif;
-  background: #ffffff;
-  color: #2f8b57;
+  font-family: "Meiryo", "Yu Gothic", sans-serif;
+  background: #fff;
+  color: #222;
 }
 
 /* レイアウト */
@@ -19,23 +20,29 @@ body {
 
 /* 左メニュー */
 .menu {
-  width: 180px;
-  padding: 20px;
-  border-right: 1px solid #ddd;
+  width: 200px;
+  padding: 24px;
+  border-right: 1px solid #eee;
 }
 
-.menu a {
+.menu-title {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* リンク */
+a {
   display: block;
-  margin-bottom: 10px;
-  color: #2f8b57;
-  text-decoration: none;
-}
-
-.menu a:hover {
+  color: #222;
   text-decoration: underline;
+  margin-bottom: 10px;
 }
 
-/* 右表示 */
+a:hover {
+  color: #000;
+}
+
+/* 右コンテンツ */
 .content {
   flex: 1;
 }
@@ -52,9 +59,8 @@ iframe {
 
 <div class="container">
 
-  <!-- 左メニュー -->
   <div class="menu">
-    <div>アズキの部屋</div><br>
+    <div class="menu-title">アズキの部屋</div>
 
     <a href="profile.html" target="main">プロフィール</a>
     <a href="archive.html" target="main">保管庫1</a>
@@ -68,7 +74,6 @@ iframe {
     <a href="https://filmarks.com/users/going_mayuway" target="_blank">Filmarks</a>
   </div>
 
-  <!-- 右表示エリア -->
   <div class="content">
     <iframe name="main" src="profile.html"></iframe>
   </div>
