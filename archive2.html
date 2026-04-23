@@ -56,6 +56,22 @@ details p {
   border-left: 2px solid transparent; /* 見えないけど段差が出る */
 }
 
+summary {
+  cursor: pointer;
+}
+
+/* タイトル */
+.summary .title {
+  font-weight: 500;
+}
+
+/* 日付 */
+.date {
+  font-size: 12px;
+  color: #777;
+  margin-left: 8px;
+}
+
 /* リンク */
 a {
   color: #222;
@@ -82,7 +98,10 @@ a:hover {
 
 {% for post in site.categories.zatsuki %}
 <details>
-  <summary>{{ post.date | date: "%Y-%m-%d" }} {{ post.title }}</summary>
+ <summary>
+  <span class="title">{{ post.title }}</span>
+  <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+</summary>
   <p>{{ post.content }}</p>
 </details>
 {% endfor %}
