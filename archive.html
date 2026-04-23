@@ -52,9 +52,9 @@ details[open] summary {
 /* 本文を1段下げる（重要） */
 details p {
   margin-top: 6px;
-  margin-left: 18px;   /* ← これで階層を作る */
+  padding-left: 16px;   /* ← marginではなくpadding */
+  border-left: 2px solid transparent; /* 見えないけど段差が出る */
 }
-
 /* summary */
 summary {
   cursor: pointer;
