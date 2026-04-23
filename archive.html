@@ -11,18 +11,22 @@ title: "保管庫1"
 
 <style>
 body {
+  margin: 0;
+  font-family: "Meiryo", "Yu Gothic", sans-serif;
   background: #fff;
   color: #222;
-  font-family: "Meiryo", "Yu Gothic", sans-serif;
+}
+
+/* 中央寄せではなく余白ベース */
+.container {
+  max-width: 720px;
   margin: 40px auto;
-  max-width: 680px;
-  line-height: 1.8;
-  font-size: 15px;
+  padding: 0 20px;
 }
 
 /* タイトル */
 h1 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
 }
@@ -41,6 +45,7 @@ details {
 summary {
   cursor: pointer;
   font-weight: 600;
+  color: #222;
 }
 
 details p {
@@ -64,6 +69,8 @@ a:hover {
 
 <body>
 
+<div class="container">
+
 <h1>{{ page.title }}</h1>
 
 <div class="desc">
@@ -80,6 +87,8 @@ a:hover {
 <br>
 
 <a href="index.html">← トップに戻る</a>
+
+</div>
 
 </body>
 </html>
